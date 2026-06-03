@@ -68,14 +68,16 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="py-20 md:py-28 bg-white">
+    <section id="process" className="py-20 md:py-28" style={{ backgroundColor: "var(--background)" }}>
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <div className="mb-16" data-aos="fade-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900">
-            Our Recruitment <span className="text-indigo-600">Process</span>
+          <h2 className="text-4xl md:text-5xl font-bold"  style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 500, lineHeight: 1.3, color: "var(--foreground)", marginBottom: "0.4rem" }}>
+            Our Recruitment  <span className="bg-gradient-to-r from-brand-purple to-brand-orange bg-clip-text text-transparent">
+              Process
+            </span>
           </h2>
-          <p className="mt-4 text-base text-slate-600 leading-relaxed max-w-4xl">
+          <p className="mt-4 text-base leading-relaxed max-w-4xl" style={{ color: "var(--muted-foreground)" }}>
             A streamlined, proven approach to finding the right talent for your organization. Our 8-step methodology ensures quality, transparency, and successful outcomes.
           </p>
         </div>
@@ -87,16 +89,16 @@ export default function Process() {
               <div key={idx} className="relative">
                 {idx % 2 === 0 ? (
                   // Even indices - Image on right, content on left
-                  <div className="lg:grid lg:grid-cols-2 lg:gap-6 items-stretch">
+                  <div className="lg:grid lg:grid-cols-2 items-stretch">
                     <div className="text-right lg:pr-6 flex items-center" data-aos="fade-right">
                       <div className="inline-block w-full max-w-lg">
-                        <div className="text-5xl font-black text-indigo-600/10">Phase {step.n}</div>
-                        <div className="w-12 h-0.5 bg-indigo-600 my-1 ml-auto"></div>
-                        <h3 className="text-lg font-bold text-slate-900">{step.title}</h3>
-                        <p className="mt-1 text-sm text-slate-600 leading-relaxed text-justify line-clamp-3">{step.text}</p>
+                        <div className="text-5xl font-black" style={{ color: "var(--primary)", opacity: 0.1 }}>Phase {step.n}</div>
+                        <div className="w-12 h-0.5 my-1 ml-auto" style={{ backgroundColor: "var(--primary)" }}></div>
+                        <h3 className="text-lg font-bold" style={{ color: "var(--foreground)" }}>{step.title}</h3>
+                        <p className="mt-1 text-sm leading-relaxed text-justify line-clamp-3" style={{ color: "var(--muted-foreground)" }}>{step.text}</p>
                         <div className="mt-2 flex flex-wrap gap-1.5 justify-end">
                           {step.tags.map((tag, tagIdx) => (
-                            <span key={tagIdx} className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+                            <span key={tagIdx} className="text-xs font-medium px-2 py-1 rounded-full" style={{ color: "var(--primary)", backgroundColor: "var(--accent)" }}>
                               {tag}
                             </span>
                           ))}
@@ -108,32 +110,32 @@ export default function Process() {
                         <img 
                           src={step.image} 
                           alt={`Phase ${step.n}: ${step.title}`}
-                          className="w-full h-auto max-h-full object-contain p-8"
+                          className="w-[300px] h-auto object-contain"
                         />
                       </div>
                     </div>
                   </div>
                 ) : (
                   // Odd indices - Image on left, content on right
-                  <div className="lg:grid lg:grid-cols-2 lg:gap-6 items-stretch">
+                  <div className="lg:grid lg:grid-cols-2 items-stretch">
                     <div className="hidden lg:flex justify-end pr-6 items-stretch">
                       <div className="w-full flex items-center">
                         <img 
                           src={step.image} 
                           alt={`Phase ${step.n}: ${step.title}`}
-                          className="w-full h-auto max-h-full object-contain p-8"
+                          className="w-[300px] h-auto object-contain ml-auto"
                         />
                       </div>
                     </div>
                     <div className="lg:pl-6 flex items-center" data-aos="fade-left">
                       <div className="w-full max-w-lg">
-                        <div className="text-5xl font-black text-indigo-600/10">Phase {step.n}</div>
-                        <div className="w-12 h-0.5 bg-indigo-600 my-1"></div>
-                        <h3 className="text-lg font-bold text-slate-900">{step.title}</h3>
-                        <p className="mt-1 text-sm text-slate-600 leading-relaxed text-justify line-clamp-3">{step.text}</p>
+                        <div className="text-5xl font-black" style={{ color: "var(--primary)", opacity: 0.1 }}>Phase {step.n}</div>
+                        <div className="w-12 h-0.5 my-1" style={{ backgroundColor: "var(--primary)" }}></div>
+                        <h3 className="text-lg font-bold" style={{ color: "var(--foreground)" }}>{step.title}</h3>
+                        <p className="mt-1 text-sm leading-relaxed text-justify line-clamp-3" style={{ color: "var(--muted-foreground)" }}>{step.text}</p>
                         <div className="mt-2 flex flex-wrap gap-1.5">
                           {step.tags.map((tag, tagIdx) => (
-                            <span key={tagIdx} className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+                            <span key={tagIdx} className="text-xs font-medium px-2 py-1 rounded-full" style={{ color: "var(--primary)", backgroundColor: "var(--accent)" }}>
                               {tag}
                             </span>
                           ))}
@@ -144,19 +146,19 @@ export default function Process() {
                 )}
 
                 {/* Mobile view */}
-                <div className="lg:hidden mt-2 p-3 bg-white rounded-2xl shadow-lg border border-indigo-100">
+                <div className="lg:hidden mt-2 p-3 rounded-2xl shadow-elegant" style={{ backgroundColor: "var(--card)", border: "1px solid var(--border)" }}>
                   <div className="flex flex-col items-center text-center">
-                    <div className="text-3xl font-black text-indigo-600/20">Phase {step.n}</div>
+                    <div className="text-3xl font-black" style={{ color: "var(--primary)", opacity: 0.2 }}>Phase {step.n}</div>
                     <img 
                       src={step.image} 
                       alt={`Phase ${step.n}: ${step.title}`}
                       className="w-24 h-24 object-contain my-1"
                     />
-                    <h3 className="text-base font-bold text-slate-900">{step.title}</h3>
-                    <p className="mt-1 text-xs text-slate-600 text-justify line-clamp-2">{step.text}</p>
+                    <h3 className="text-base font-bold" style={{ color: "var(--foreground)" }}>{step.title}</h3>
+                    <p className="mt-1 text-xs text-justify line-clamp-2" style={{ color: "var(--muted-foreground)" }}>{step.text}</p>
                     <div className="mt-1 flex flex-wrap gap-1 justify-center">
                       {step.tags.slice(0, 3).map((tag, tagIdx) => (
-                        <span key={tagIdx} className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">
+                        <span key={tagIdx} className="text-xs font-medium px-2 py-0.5 rounded-full" style={{ color: "var(--primary)", backgroundColor: "var(--accent)" }}>
                           {tag}
                         </span>
                       ))}

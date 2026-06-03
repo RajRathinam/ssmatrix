@@ -73,7 +73,8 @@ const StarRating = ({ rating }) => (
     {Array.from({ length: rating }).map((_, i) => (
       <svg
         key={i}
-        className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400"
+        className="w-3.5 h-3.5"
+        style={{ fill: "var(--brand-orange)", color: "var(--brand-orange)" }}
         viewBox="0 0 24 24"
       >
         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
@@ -103,10 +104,15 @@ const TestimonialsColumn = ({
           {testimonials.map(({ text, image, name, role, rating }, i) => (
             <div
               key={i}
-              className="p-6 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 max-w-[360px] w-full"
+              className="p-6 rounded-2xl shadow-sm transition-all duration-300 max-w-[360px] w-full"
+              style={{
+                border: "1px solid var(--border)",
+                backgroundColor: "var(--card)",
+                color: "var(--card-foreground)"
+              }}
             >
               <StarRating rating={rating} />
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--muted-foreground)" }}>
                 &ldquo;{text}&rdquo;
               </p>
               <div className="flex items-center gap-3">
@@ -115,13 +121,14 @@ const TestimonialsColumn = ({
                   alt={name}
                   width={36}
                   height={36}
-                  className="w-9 h-9 rounded-full object-cover ring-2 ring-blue-100 dark:ring-blue-900"
+                  className="w-9 h-9 rounded-full object-cover"
+                  style={{ ring: "2px solid var(--primary)" }}
                 />
                 <div>
-                  <p className="text-sm font-semibold text-gray-900 dark:text-white leading-tight">
+                  <p className="text-sm font-semibold leading-tight" style={{ color: "var(--foreground)" }}>
                     {name}
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 leading-tight mt-0.5">
+                  <p className="text-xs leading-tight mt-0.5" style={{ color: "var(--muted-foreground)" }}>
                     {role}
                   </p>
                 </div>
@@ -140,7 +147,15 @@ const thirdColumn  = testimonials.slice(6, 9);
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 md:py-28 bg-gradient-to-b from-white to-blue-50/40 dark:from-gray-900 dark:to-gray-900 overflow-hidden">
+    <section 
+      id="testimonials" 
+      className="py-20 md:py-28 overflow-hidden"
+      style={{ 
+        background: "var(--gradient-hero)",
+        backgroundColor: "var(--background)",
+        fontFamily: "var(--font-sans)"
+      }}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -151,19 +166,25 @@ export default function Testimonials() {
           viewport={{ once: true }}
           className="flex flex-col items-center text-center max-w-[540px] mx-auto mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm mb-5">
-            <span className="text-xs font-semibold tracking-widest text-blue-600 uppercase">
+          <div 
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full shadow-sm mb-5"
+            style={{
+              backgroundColor: "var(--card)",
+              border: "1px solid var(--border)"
+            }}
+          >
+            <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "var(--primary)" }}>
               Testimonials
             </span>
           </div>
 
-          <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight">
+          <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight"  style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 500, lineHeight: 1.3, color: "var(--foreground)", marginBottom: "0.4rem" }}>
             What Our{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand-purple to-brand-orange bg-clip-text text-transparent">
               Clients Say
             </span>
           </h2>
-          <p className="mt-4 text-base text-gray-500 dark:text-gray-400">
+          <p className="mt-4 text-base" style={{ color: "var(--muted-foreground)" }}>
             Trusted by HR leaders and technology companies across India.
           </p>
         </motion.div>

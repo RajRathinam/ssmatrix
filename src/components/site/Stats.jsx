@@ -80,7 +80,7 @@ export default function Stats() {
     <section
       style={{
         padding: "48px 40px",
-        background: "#F0EEF8",
+        background: "var(--background)",
         fontFamily: "'DM Sans', sans-serif",
         minHeight: "100vh",
         boxSizing: "border-box",
@@ -94,7 +94,7 @@ export default function Stats() {
           alignItems: "center",
           marginBottom: "32px",
           fontSize: "11px",
-          color: "#9E9BB5",
+          color: "var(--muted-foreground)",
           letterSpacing: "0.06em",
         }}
       >
@@ -116,22 +116,17 @@ export default function Stats() {
         }}
       >
         <h2
-          style={{
-            fontSize: "clamp(24px, 3vw, 36px)",
-            fontWeight: "700",
-            color: "#1A1730",
-            margin: 0,
-            lineHeight: 1.2,
-            letterSpacing: "-0.02em",
-          }}
+           style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 500, lineHeight: 1.3, color: "var(--foreground)", marginBottom: "0.4rem" }}
         >
-          Boost Efficiency by<br />Automating Work
+          Boost Efficiency by  <span className="bg-gradient-to-r from-brand-purple to-brand-orange bg-clip-text text-transparent">
+              Automating Work
+            </span>
         </h2>
         <p
           style={{
             maxWidth: "280px",
             fontSize: "13px",
-            color: "#6B6880",
+            color: "var(--muted-foreground)",
             lineHeight: 1.7,
             margin: 0,
           }}
@@ -154,7 +149,7 @@ export default function Stats() {
             key={idx}
             style={{
               clipPath: notchedClipPath,
-              background: stat.dark ? "#6B3FD4" : "#E8E4FC",
+              background: stat.dark ? "var(--primary)" : "var(--accent)",
               padding: "28px 24px 24px",
               display: "flex",
               flexDirection: "column",
@@ -176,7 +171,7 @@ export default function Stats() {
               style={{
                 width: "38px",
                 height: "38px",
-                borderRadius: "10px",
+                borderRadius: "var(--radius)",
                 background: stat.dark
                   ? "rgba(255,255,255,0.2)"
                   : "rgba(255,255,255,0.6)",
@@ -184,7 +179,7 @@ export default function Stats() {
                 alignItems: "center",
                 justifyContent: "center",
                 marginBottom: "20px",
-                color: stat.dark ? "#fff" : "#6B3FD4",
+                color: stat.dark ? "var(--primary-foreground)" : "var(--primary)",
               }}
             >
               {stat.icon}
@@ -197,7 +192,7 @@ export default function Stats() {
                 fontWeight: "800",
                 lineHeight: 1,
                 marginBottom: "6px",
-                color: stat.dark ? "#fff" : "#6B3FD4",
+                color: stat.dark ? "var(--primary-foreground)" : "var(--primary)",
                 letterSpacing: "-0.03em",
               }}
             >
@@ -212,7 +207,7 @@ export default function Stats() {
               style={{
                 fontSize: "14px",
                 fontWeight: "600",
-                color: stat.dark ? "#E8DEFF" : "#3C3489",
+                color: stat.dark ? "var(--accent)" : "var(--foreground)",
                 marginBottom: "auto",
               }}
             >
@@ -223,7 +218,7 @@ export default function Stats() {
             <div
               style={{
                 fontSize: "12px",
-                color: stat.dark ? "rgba(255,255,255,0.6)" : "#7F77DD",
+                color: stat.dark ? "rgba(255,255,255,0.6)" : "var(--muted-foreground)",
                 lineHeight: 1.5,
                 marginTop: "16px",
               }}

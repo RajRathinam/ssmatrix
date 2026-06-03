@@ -1,8 +1,8 @@
 export default function CTA() {
   return (
     <section className="py-20 md:py-24">
-      <div className="container mx-auto px-4">
-        <div className="relative overflow-hidden rounded-3xl p-10 md:p-16 bg-gradient-brand text-primary-foreground shadow-elegant" data-aos="zoom-in">
+      <div>
+        <div className="relative overflow-hidden p-10 md:p-16 bg-gradient-brand text-primary-foreground shadow-elegant" data-aos="zoom-in">
           <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-white/15 blur-3xl" />
           <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-white/10 blur-3xl" />
           <div className="relative max-w-3xl">
