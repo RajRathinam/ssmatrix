@@ -57,7 +57,7 @@ export default function About() {
               Empowering Businesses
             </span> </h2>
           </div>
-          <p className="leading-relaxed self-end" style={{ color: "var(--muted-foreground)" }}>
+          <p className="text-body leading-relaxed self-end" style={{ color: "var(--muted-foreground)" }}>
             SS MATRIX is a trusted Recruitment, Staffing, HR Consulting and IT
             Services company dedicated to connecting talented professionals with
             leading organizations across India.
@@ -85,7 +85,7 @@ export default function About() {
                 <p className="mb-2 text-lg font-semibold" style={{ color: "var(--foreground)" }}>
                   Trusted by 300+ companies
                 </p>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+                <p className="text-body leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
                   Providing businesses with effective tools to improve workflows,
                   boost efficiency, and encourage growth across Tamil Nadu and
                   beyond.
@@ -139,7 +139,7 @@ export default function About() {
               <Eye className="w-6 h-6" />
             </div>
             <h3 className="mt-4 font-semibold text-lg" style={{ color: "var(--foreground)" }}>Our Vision</h3>
-            <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+            <p className="mt-2 text-body leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
               To be India's most trusted partner for talent acquisition and digital transformation, recognized for excellence and integrity.
             </p>
           </div>
@@ -154,7 +154,7 @@ export default function About() {
             <img 
               src={aboutImage3} 
               alt="Our Mission" 
-              className="w-full h-full object-contain min-h-[220px]"
+              className="w-full h-full object-contain min-h-[180px] md:min-h-[220px]"
             />
           </div>
 
@@ -171,42 +171,16 @@ export default function About() {
               <Heart className="w-6 h-6" />
             </div>
             <h3 className="mt-4 font-semibold text-lg" style={{ color: "var(--foreground)" }}>Our Values</h3>
-            <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+            <p className="mt-2 text-body leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
               Integrity, transparency, commitment and a relentless focus on outcomes for both candidates and client organizations.
             </p>
           </div>
         </div>
 
-        {/* ── Companies strip ── */}
-        <div className="py-20">
-          <p className="text-center text-sm font-medium tracking-wide" style={{ color: "var(--muted-foreground)" }}>
-            Valued by clients across India
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-6">
-            {companies.map((c) => (
-              <div
-                key={c.name}
-                className="flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors"
-                style={{
-                  border: "1px solid var(--border)",
-                  backgroundColor: "var(--card)",
-                  color: "var(--muted-foreground)"
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "var(--foreground)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "var(--muted-foreground)";
-                }}
-              >
-                {c.name}
-              </div>
-            ))}
-          </div>
-        </div>
+    
 
         {/* ── Achievements banner (about-3 style) ── */}
-        <div className="relative overflow-hidden rounded-xl p-10 md:p-16" style={{ backgroundColor: "var(--muted)", borderRadius: "var(--radius)" }}>
+        <div className="relative overflow-hidden rounded-xl px-5 py-10 mt-10 md:p-16" style={{ backgroundColor: "var(--muted)", borderRadius: "var(--radius)" }}>
           {/* Grid overlay */}
           <div className="pointer-events-none absolute -top-1 right-1 z-10 hidden h-full w-full bg-[linear-gradient(to_right,oklch(0.45_0_0)_1px,transparent_1px),linear-gradient(to_bottom,oklch(0.45_0_0)_1px,transparent_1px)] bg-[size:80px_80px] opacity-15 [mask-image:linear-gradient(to_bottom_right,#000,transparent,transparent)] md:block" />
 
@@ -214,7 +188,7 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-semibold" style={{ color: "var(--foreground)" }}>
               Our Achievements in Numbers
             </h2>
-            <p className="max-w-screen-sm" style={{ color: "var(--muted-foreground)" }}>
+            <p className="text-body max-w-screen-sm" style={{ color: "var(--muted-foreground)" }}>
               Providing businesses with effective tools to improve workflows,
               boost efficiency, and encourage growth.
             </p>
@@ -223,7 +197,7 @@ export default function About() {
           <div className="mt-10 flex flex-wrap justify-between gap-10 text-center">
             {achievements.map((item) => (
               <div key={item.label} className="flex flex-col gap-3">
-                <p className="text-sm" style={{ color: "var(--muted-foreground)" }}>{item.label}</p>
+                <p className="text-body" style={{ color: "var(--muted-foreground)" }}>{item.label}</p>
                 <span className="text-4xl md:text-5xl font-semibold" style={{ color: "var(--primary)" }}>
                   {item.value}
                 </span>

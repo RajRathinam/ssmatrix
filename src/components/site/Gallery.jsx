@@ -1,6 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Calendar, TrendingUp, DollarSign, BookOpen, ArrowUpRight, ArrowRight } from "lucide-react";
+import gallery1 from "../../assets/gallery_1.png";
+import gallery2 from "../../assets/gallery_2.png";
+import gallery3 from "../../assets/gallery_3.png";
+import gallery4 from "../../assets/gallery_4.png";
+import gallery5 from "../../assets/gallery_5.png";
+import gallery6 from "../../assets/gallery_6.png"
+
 
 const items = [
   {
@@ -9,7 +16,7 @@ const items = [
     description: "Master the art of budgeting with our comprehensive guide.",
     icon: DollarSign,
     type: "News | Insights",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80",
+    image: gallery1,
   },
   {
     cat: "Corporate Events",
@@ -17,7 +24,7 @@ const items = [
     description: "Discover the best investment strategies to build wealth.",
     icon: TrendingUp,
     type: "Insights",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=80",
+    image: gallery2,
   },
   {
     cat: "Training Programs",
@@ -25,7 +32,7 @@ const items = [
     description: "Get a clear understanding of the risks and rewards.",
     icon: BookOpen,
     type: "News | Insights",
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&q=80",
+    image: gallery3,
   },
   {
     cat: "Student Placements",
@@ -33,7 +40,7 @@ const items = [
     description: "Effective strategies to improve financial health.",
     icon: DollarSign,
     type: "Insights",
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&q=80",
+    image: gallery4,
   },
   {
     cat: "Office Activities",
@@ -41,7 +48,7 @@ const items = [
     description: "What it means for business operations.",
     icon: Calendar,
     type: "Insights",
-    image: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400&q=80",
+    image: gallery5,
   },
   {
     cat: "Recruitment Drives",
@@ -49,7 +56,7 @@ const items = [
     description: "Revolutionizing the way companies hire top talent.",
     icon: TrendingUp,
     type: "News | Insights",
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=80",
+    image:gallery6,
   },
 ];
 
@@ -126,12 +133,14 @@ export default function Gallery() {
               style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 500, lineHeight: 1.3, color: "var(--foreground)", marginBottom: "0.4rem" }}
             >
               Latest{" "}
-              <span className="text-gradient-brand">insights and trends</span>
+              <span className="bg-gradient-to-r from-brand-purple to-brand-orange bg-clip-text text-transparent">
+              insights and trends
+            </span>
             </h2>
             
             <a
               href="#"
-              className="group inline-flex items-center gap-1 text-sm font-medium mt-2"
+              className="group inline-flex items-center gap-1 text-body font-medium mt-2"
               style={{ color: "var(--primary)" }}
             >
               Book a demo
@@ -227,7 +236,7 @@ export default function Gallery() {
                 </p>
 
                 {/* Read more - smaller */}
-                <div className="mt-auto flex items-center text-xs font-medium" style={{ color: "var(--foreground)" }}>
+                <div className="mt-auto flex items-center text-body font-medium" style={{ color: "var(--foreground)" }}>
                   Read more
                   <ArrowRight className="ml-1 w-3 h-3 transition-transform group-hover:translate-x-1" />
                 </div>

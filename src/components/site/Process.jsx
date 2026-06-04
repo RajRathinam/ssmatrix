@@ -71,13 +71,14 @@ export default function Process() {
     <section id="process" className="py-20 md:py-28" style={{ backgroundColor: "var(--background)" }}>
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
-        <div className="mb-16" data-aos="fade-up">
-          <h2 className="text-4xl md:text-5xl font-bold"  style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 500, lineHeight: 1.3, color: "var(--foreground)", marginBottom: "0.4rem" }}>
-            Our Recruitment  <span className="bg-gradient-to-r from-brand-purple to-brand-orange bg-clip-text text-transparent">
+        <div className="mb-12 md:mb-16" data-aos="fade-up">
+          <h2 className="text-4xl md:text-5xl font-bold" style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 500, lineHeight: 1.3, color: "var(--foreground)", marginBottom: "0.4rem" }}>
+            Our Recruitment{" "}
+            <span className="bg-gradient-to-r from-brand-purple to-brand-orange bg-clip-text text-transparent">
               Process
             </span>
           </h2>
-          <p className="mt-4 text-base leading-relaxed max-w-4xl" style={{ color: "var(--muted-foreground)" }}>
+          <p className="mt-4 text-body leading-relaxed max-w-4xl" style={{ color: "var(--muted-foreground)" }}>
             A streamlined, proven approach to finding the right talent for your organization. Our 8-step methodology ensures quality, transparency, and successful outcomes.
           </p>
         </div>
@@ -86,17 +87,17 @@ export default function Process() {
         <div className="relative">
           <div className="space-y-0">
             {steps.map((step, idx) => (
-              <div key={idx} className="relative">
+              <div key={idx} className="relative mb-0 lg:mb-0">
                 {idx % 2 === 0 ? (
                   // Even indices - Image on right, content on left
                   <div className="lg:grid lg:grid-cols-2 items-stretch">
                     <div className="text-right lg:pr-6 flex items-center" data-aos="fade-right">
                       <div className="inline-block w-full max-w-lg">
                         <div className="text-5xl font-black" style={{ color: "var(--primary)", opacity: 0.1 }}>Phase {step.n}</div>
-                        <div className="w-12 h-0.5 my-1 ml-auto" style={{ backgroundColor: "var(--primary)" }}></div>
-                        <h3 className="text-lg font-bold" style={{ color: "var(--foreground)" }}>{step.title}</h3>
-                        <p className="mt-1 text-sm leading-relaxed text-justify line-clamp-3" style={{ color: "var(--muted-foreground)" }}>{step.text}</p>
-                        <div className="mt-2 flex flex-wrap gap-1.5 justify-end">
+                        <div className="w-12 h-0.5 my-1 ml-auto hidden lg:block" style={{ backgroundColor: "var(--primary)" }}></div>
+                        <h3 className="text-lg font-bold hidden md:block" style={{ color: "var(--foreground)" }}>{step.title}</h3>
+                        <p className="mt-1 text-body leading-relaxed text-justify line-clamp-3 hidden lg:block" style={{ color: "var(--muted-foreground)" }}>{step.text}</p>
+                        <div className="mt-2 flex flex-wrap gap-1.5 justify-end hidden lg:flex">
                           {step.tags.map((tag, tagIdx) => (
                             <span key={tagIdx} className="text-xs font-medium px-2 py-1 rounded-full" style={{ color: "var(--primary)", backgroundColor: "var(--accent)" }}>
                               {tag}
@@ -130,10 +131,10 @@ export default function Process() {
                     <div className="lg:pl-6 flex items-center" data-aos="fade-left">
                       <div className="w-full max-w-lg">
                         <div className="text-5xl font-black" style={{ color: "var(--primary)", opacity: 0.1 }}>Phase {step.n}</div>
-                        <div className="w-12 h-0.5 my-1" style={{ backgroundColor: "var(--primary)" }}></div>
-                        <h3 className="text-lg font-bold" style={{ color: "var(--foreground)" }}>{step.title}</h3>
-                        <p className="mt-1 text-sm leading-relaxed text-justify line-clamp-3" style={{ color: "var(--muted-foreground)" }}>{step.text}</p>
-                        <div className="mt-2 flex flex-wrap gap-1.5">
+                        <div className="w-12 h-0.5 my-1 hidden lg:block" style={{ backgroundColor: "var(--primary)" }}></div>
+                        <h3 className="text-lg font-bold hidden md:block" style={{ color: "var(--foreground)" }}>{step.title}</h3>
+                        <p className="mt-1 text-body leading-relaxed text-justify line-clamp-3 hidden lg:block" style={{ color: "var(--muted-foreground)" }}>{step.text}</p>
+                        <div className="mt-2 flex flex-wrap gap-1.5 hidden lg:flex">
                           {step.tags.map((tag, tagIdx) => (
                             <span key={tagIdx} className="text-xs font-medium px-2 py-1 rounded-full" style={{ color: "var(--primary)", backgroundColor: "var(--accent)" }}>
                               {tag}
@@ -145,20 +146,19 @@ export default function Process() {
                   </div>
                 )}
 
-                {/* Mobile view */}
-                <div className="lg:hidden mt-2 p-3 rounded-2xl shadow-elegant" style={{ backgroundColor: "var(--card)", border: "1px solid var(--border)" }}>
+                {/* Mobile view - with spacing between each phase */}
+                <div className="lg:hidden p-5 rounded-2xl shadow-elegant" style={{ backgroundColor: "var(--card)", border: "1px solid var(--border)", marginBottom: idx !== steps.length - 1 ? '20px' : '0' }}>
                   <div className="flex flex-col items-center text-center">
-                    <div className="text-3xl font-black" style={{ color: "var(--primary)", opacity: 0.2 }}>Phase {step.n}</div>
                     <img 
                       src={step.image} 
                       alt={`Phase ${step.n}: ${step.title}`}
-                      className="w-24 h-24 object-contain my-1"
+                      className="w-24 h-24 object-contain mb-4"
                     />
-                    <h3 className="text-base font-bold" style={{ color: "var(--foreground)" }}>{step.title}</h3>
-                    <p className="mt-1 text-xs text-justify line-clamp-2" style={{ color: "var(--muted-foreground)" }}>{step.text}</p>
-                    <div className="mt-1 flex flex-wrap gap-1 justify-center">
-                      {step.tags.slice(0, 3).map((tag, tagIdx) => (
-                        <span key={tagIdx} className="text-xs font-medium px-2 py-0.5 rounded-full" style={{ color: "var(--primary)", backgroundColor: "var(--accent)" }}>
+                    <h3 className="text-lg font-bold mb-2" style={{ color: "var(--foreground)" }}>{step.title}</h3>
+                    <p className="text-sm text-body text-justify mb-4" style={{ color: "var(--muted-foreground)" }}>{step.text}</p>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {step.tags.map((tag, tagIdx) => (
+                        <span key={tagIdx} className="text-xs font-medium px-2.5 py-1 rounded-full" style={{ color: "var(--primary)", backgroundColor: "var(--accent)" }}>
                           {tag}
                         </span>
                       ))}

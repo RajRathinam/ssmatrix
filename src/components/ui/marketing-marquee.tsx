@@ -25,10 +25,10 @@ export function MarketingMarquee() {
           {marketingServices.map((service) => (
             <div
               key={service.name}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer group"
+              className="inline-flex items-center gap-2 px-4 md:px-6 py-3 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer group"
             >
-              <service.icon className={`w-4 h-4 bg-gradient-to-r ${service.color} bg-clip-text text-transparent group-hover:scale-110 transition-transform`} />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
+              <service.icon className={`w-4 h-4 text-gray-400`} />
+              <span className="text-body font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
                 {service.name}
               </span>
             </div>
@@ -39,8 +39,8 @@ export function MarketingMarquee() {
               key={`${service.name}-duplicate`}
               className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer group"
             >
-              <service.icon className={`w-4 h-4 bg-gradient-to-r ${service.color} bg-clip-text text-transparent group-hover:scale-110 transition-transform`} />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
+              <service.icon className={`w-4 h-4 text-gray-400`} />
+              <span className="text-body font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
                 {service.name}
               </span>
             </div>

@@ -79,14 +79,15 @@ export default function Stats() {
   return (
     <section
       style={{
-        padding: "48px 40px",
+        padding: "48px 16px",
         background: "var(--background)",
         fontFamily: "'DM Sans', sans-serif",
         minHeight: "100vh",
         boxSizing: "border-box",
       }}
+      className="max-sm:px-5 max-sm:py-8"
     >
-      {/* Top bar */}
+      {/* Top bar - hidden on mobile */}
       <div
         style={{
           display: "flex",
@@ -97,6 +98,7 @@ export default function Stats() {
           color: "var(--muted-foreground)",
           letterSpacing: "0.06em",
         }}
+        className="max-sm:hidden"
       >
         <span>Firmwise</span>
         <span style={{ display: "flex", gap: "80px" }}>
@@ -105,7 +107,7 @@ export default function Stats() {
         </span>
       </div>
 
-      {/* Header */}
+      {/* Header - column on mobile, row on desktop */}
       <div
         style={{
           display: "flex",
@@ -114,18 +116,21 @@ export default function Stats() {
           marginBottom: "40px",
           gap: "24px",
         }}
+        className="flex-col max-sm:flex-col sm:flex-row sm:gap-6 max-sm:gap-4 max-sm:mb-6"
       >
         <h2
-           style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 500, lineHeight: 1.3, color: "var(--foreground)", marginBottom: "0.4rem" }}
+          style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 500, lineHeight: 1.3, color: "var(--foreground)", marginBottom: "0.4rem" }}
+          className="max-sm:text-2xl"
         >
-          Boost Efficiency by  <span className="bg-gradient-to-r from-brand-purple to-brand-orange bg-clip-text text-transparent">
-              Automating Work
-            </span>
+          Boost Efficiency by{" "}
+          <span className="bg-gradient-to-r from-brand-purple to-brand-orange bg-clip-text text-transparent">
+            Automating Work
+          </span>
         </h2>
         <p
+          className="text-body max-sm:max-w-full"
           style={{
             maxWidth: "280px",
-            fontSize: "13px",
             color: "var(--muted-foreground)",
             lineHeight: 1.7,
             margin: 0,
@@ -136,13 +141,13 @@ export default function Stats() {
         </p>
       </div>
 
-      {/* Cards */}
+      {/* Cards - column on mobile, row on desktop */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
           gap: "16px",
         }}
+        className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-sm:gap-3"
       >
         {stats.map((stat, idx) => (
           <div
@@ -159,6 +164,7 @@ export default function Stats() {
               transition: "transform 0.2s ease",
               cursor: "default",
             }}
+            className="max-sm:min-h-[200px] max-sm:p-5"
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "translateY(-4px)")
             }
@@ -181,6 +187,7 @@ export default function Stats() {
                 marginBottom: "20px",
                 color: stat.dark ? "var(--primary-foreground)" : "var(--primary)",
               }}
+              className="max-sm:w-8 max-sm:h-8 max-sm:mb-3"
             >
               {stat.icon}
             </div>
@@ -195,9 +202,10 @@ export default function Stats() {
                 color: stat.dark ? "var(--primary-foreground)" : "var(--primary)",
                 letterSpacing: "-0.03em",
               }}
+              className="max-sm:text-4xl"
             >
               {stat.value}
-              <span style={{ fontSize: "32px", fontWeight: "700" }}>
+              <span style={{ fontSize: "32px", fontWeight: "700" }} className="max-sm:text-xl">
                 {stat.suffix}
               </span>
             </div>
@@ -216,8 +224,8 @@ export default function Stats() {
 
             {/* Description */}
             <div
+              className="text-body max-sm:text-xs max-sm:mt-2"
               style={{
-                fontSize: "12px",
                 color: stat.dark ? "rgba(255,255,255,0.6)" : "var(--muted-foreground)",
                 lineHeight: 1.5,
                 marginTop: "16px",

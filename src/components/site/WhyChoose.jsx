@@ -41,7 +41,7 @@ export default function BusinessIntelligenceSection() {
               </span>
             </h2>
             
-            <p className="mt-5 text-base md:text-sm leading-relaxed max-w-xl" style={{ color: "var(--muted-foreground)" }}>
+            <p className="mt-5 text-body leading-relaxed max-w-xl" style={{ color: "var(--muted-foreground)" }}>
               Beyond being data specialists, we stand as your strategic allies, committed to providing actionable intelligence, enabling continuous process monitoring and deploying customized strategies to propel your business forward.
             </p>
 
@@ -51,7 +51,7 @@ export default function BusinessIntelligenceSection() {
                   <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-colors" style={{ backgroundColor: "var(--accent)", color: "var(--primary)" }}>
                     <feature.icon className="w-3.5 h-3.5" />
                   </div>
-                  <span className="text-sm font-medium" style={{ color: "var(--foreground)" }}>{feature.text}</span>
+                  <span className="text-body font-medium" style={{ color: "var(--foreground)" }}>{feature.text}</span>
                 </div>
               ))}
             </div>

@@ -112,7 +112,7 @@ const TestimonialsColumn = ({
               }}
             >
               <StarRating rating={rating} />
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--muted-foreground)" }}>
+              <p className="text-body leading-relaxed mb-4" style={{ color: "var(--muted-foreground)" }}>
                 &ldquo;{text}&rdquo;
               </p>
               <div className="flex items-center gap-3">
@@ -125,7 +125,7 @@ const TestimonialsColumn = ({
                   style={{ ring: "2px solid var(--primary)" }}
                 />
                 <div>
-                  <p className="text-sm font-semibold leading-tight" style={{ color: "var(--foreground)" }}>
+                  <p className="text-body font-semibold leading-tight" style={{ color: "var(--foreground)" }}>
                     {name}
                   </p>
                   <p className="text-xs leading-tight mt-0.5" style={{ color: "var(--muted-foreground)" }}>
@@ -184,7 +184,7 @@ export default function Testimonials() {
               Clients Say
             </span>
           </h2>
-          <p className="mt-4 text-base" style={{ color: "var(--muted-foreground)" }}>
+          <p className="mt-4 text-body" style={{ color: "var(--muted-foreground)" }}>
             Trusted by HR leaders and technology companies across India.
           </p>
         </motion.div>

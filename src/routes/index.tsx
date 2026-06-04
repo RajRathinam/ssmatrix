@@ -17,7 +17,7 @@ import Gallery from "@/components/site/Gallery";
 import CTA from "@/components/site/CTA";
 import Contact from "@/components/site/Contact";
 import Footer from "@/components/site/Footer";
-import { ScrollProgress, BackToTop, LoadingScreen } from "@/components/site/Utilities";
+import { ScrollProgress, BackToTop } from "@/components/site/Utilities";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,7 +41,6 @@ function Index() {
 
   return (
     <>
-      <LoadingScreen />
       <ScrollProgress />
       <Navbar />
       <main>

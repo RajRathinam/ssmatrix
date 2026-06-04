@@ -36,20 +36,3 @@ export function BackToTop() {
     </button>
   );
 }
-
-export function LoadingScreen() {
-  const [done, setDone] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => setDone(true), 700);
-    return () => clearTimeout(t);
-  }, []);
-  if (done) return null;
-  return (
-    <div className="fixed inset-0 z-[100] bg-background flex items-center justify-center transition-opacity">
-      <div className="text-center">
-        <div className="w-14 h-14 mx-auto rounded-full border-4 border-primary/20 border-t-primary animate-spin" />
-        <div className="mt-4 font-display font-semibold text-gradient-brand">SS MATRIX</div>
-      </div>
-    </div>
-  );
-}

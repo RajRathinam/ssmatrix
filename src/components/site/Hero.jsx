@@ -1,5 +1,9 @@
 // src/components/site/Hero.tsx
 import { ArrowRight, Play, CheckCircle, TrendingUp } from "lucide-react";
+import hero1 from "../../assets/hero_1.png";
+import hero2 from "../../assets/hero_2.png";
+import hero3 from "../../assets/hero_3.png";
+import hero4 from "../../assets/hero_4.png";
 
 export default function Hero() {
   return (
@@ -7,24 +11,10 @@ export default function Hero() {
       id="home"
       className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden"
       style={{
-        background: "var(--gradient-hero)",
-        backgroundColor: "var(--background)",
         fontFamily: "var(--font-sans)"
       }}
     >
-      {/* Background decorative elements */}
-      <div className="pointer-events-none absolute inset-0 -z-0">
-        <div className="absolute top-20 -left-20 w-72 h-72 rounded-full bg-brand-purple/20 blur-3xl animate-pulse" />
-        <div className="absolute bottom-10 right-0 w-96 h-96 rounded-full bg-brand-orange/20 blur-3xl animate-pulse" />
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 rounded-full bg-primary/15 blur-3xl" />
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundRepeat: "repeat",
-          }}
-        />
-      </div>
+    
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
@@ -49,7 +39,7 @@ export default function Hero() {
             </h1>
 
             {/* Description */}
-            <p className="mt-6 max-w-xl mx-auto lg:mx-0 text-base md:text-lg leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+            <p className="mt-6 max-w-xl mx-auto lg:mx-0 text-body leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
               Leverage the power of AI, machine learning, and automation to
               achieve superior marketing and return on investment.
             </p>
@@ -59,7 +49,7 @@ export default function Hero() {
               {["AI-Powered Solutions", "Machine Learning", "Automation Tools"].map((f) => (
                 <div key={f} className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5" style={{ color: "var(--brand-orange)" }} />
-                  <span className="text-sm" style={{ color: "var(--muted-foreground)" }}>{f}</span>
+                  <span className="text-body" style={{ color: "var(--muted-foreground)" }}>{f}</span>
                 </div>
               ))}
             </div>
@@ -71,7 +61,7 @@ export default function Hero() {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                 style={{
                   background: "var(--gradient-brand)",
-                  color: "var(--primary-foreground)"
+                  color: "var(--primary)"
                 }}
               >
                 Explore AI Services <ArrowRight className="w-4 h-4" />
@@ -106,7 +96,7 @@ export default function Hero() {
               </p>
               <div className="flex flex-wrap gap-6 justify-center lg:justify-start items-center opacity-60">
                 {["MICROSOFT", "GOOGLE", "AMAZON", "META"].map((b) => (
-                  <span key={b} className="text-sm font-semibold" style={{ color: "var(--muted-foreground)" }}>
+                  <span key={b} className="text-body font-semibold" style={{ color: "var(--muted-foreground)" }}>
                     {b}
                   </span>
                 ))}
@@ -132,7 +122,7 @@ export default function Hero() {
                   </div>
                   <div>
                     <div className="font-bold text-lg" style={{ color: "var(--foreground)" }}>300%</div>
-                    <div className="text-xs" style={{ color: "var(--muted-foreground)" }}>ROI Increase</div>
+                    <div className="text-body" style={{ color: "var(--muted-foreground)" }}>ROI Increase</div>
                   </div>
                 </div>
               </div>
@@ -146,7 +136,7 @@ export default function Hero() {
                   style={{ borderRadius: "40px 16px 40px 16px", boxShadow: "var(--shadow-elegant)" }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80"
+                    src={hero1}
                     alt="Team working"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
@@ -159,7 +149,7 @@ export default function Hero() {
                     style={{ borderRadius: "16px 40px 16px 40px", boxShadow: "var(--shadow-elegant)" }}
                   >
                     <img
-                      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80"
+                      src={hero2}
                       alt="Team collaboration"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                     />
@@ -169,7 +159,7 @@ export default function Hero() {
                     style={{ borderRadius: "40px 16px 40px 16px", boxShadow: "var(--shadow-elegant)" }}
                   >
                     <img
-                      src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80"
+                      src={hero3}
                       alt="Digital marketing"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                     />
@@ -179,7 +169,7 @@ export default function Hero() {
                     style={{ borderRadius: "16px 40px 16px 40px", boxShadow: "var(--shadow-elegant)" }}
                   >
                     <img
-                      src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&q=80"
+                      src={hero4}
                       alt="Digital expertise"
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                     />
@@ -203,9 +193,9 @@ export default function Hero() {
                       </svg>
                     ))}
                   </div>
-                  <div className="text-xs font-medium" style={{ color: "var(--foreground)" }}>4.9 Rating</div>
+                  <div className="text-body font-medium" style={{ color: "var(--foreground)" }}>4.9 Rating</div>
                 </div>
-                <div className="text-xs mt-1" style={{ color: "var(--muted-foreground)" }}>500+ Reviews</div>
+                <div className="text-body mt-1" style={{ color: "var(--muted-foreground)" }}>500+ Reviews</div>
               </div>
 
               {/* Floating Card — AI Badge */}

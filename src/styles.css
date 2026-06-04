@@ -50,64 +50,73 @@
   --popover: #ffffff;
   --popover-foreground: #111827;
 
-  /* Brand Primary */
-  --primary: #6d28d9;
+  /* Brand Primary - CTA Orange */
+  --primary: #f3aa50;
   --primary-foreground: #ffffff;
 
-  /* Secondary */
+  /* Secondary - Purple accent */
   --secondary: #f5f3ff;
-  --secondary-foreground: #111827;
+  --secondary-foreground: #6d28d9;
 
-  --muted: #f8fafc;
-  --muted-foreground: #64748b;
+  --muted: #fef9f0;
+  --muted-foreground: #78716c;
 
-  /* Light Accent */
-  --accent: #9b05ff2e;
-  --accent-foreground: #111827;
+  /* Light Accent - Orange tint */
+  --accent: rgba(243, 170, 80, 0.12);
+  --accent-foreground: #f3aa50;
 
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
 
-  --border: #e5e7eb;
-  --input: #f8fafc;
-  --ring: #6d28d9;
+  --border: #f0e6d8;
+  --input: #fefaf5;
+  --ring: #f3aa50;
 
-  /* Brand Colors */
+  /* Brand Colors - CTA Theme */
+  --brand-orange: #f3aa50;
+  --brand-orange-dark: #e8922e;
+  --brand-orange-light: #fdf4e6;
   --brand-purple: #6d28d9;
-  --brand-orange: #ffd6a5;
   --brand-dark: #111827;
 
-  /* White Gradients Only */
+  /* Warm Gradients - Orange/White theme */
   --gradient-brand: linear-gradient(
     135deg,
     #ffffff 0%,
-    #fafafa 50%,
-    #f3f4f6 100%
+    #fef9f0 50%,
+    #fdf4e6 100%
   );
 
   --gradient-hero:
     radial-gradient(
       ellipse at top left,
-      rgba(255,255,255,0.95),
+      rgba(243, 170, 80, 0.08),
       transparent 70%
     ),
     radial-gradient(
       ellipse at bottom right,
-      rgba(248,250,252,0.9),
+      rgba(243, 170, 80, 0.05),
       transparent 70%
     );
 
   --gradient-card: linear-gradient(
     135deg,
     #ffffff 0%,
-    #fafafa 100%
+    #fefaf5 100%
+  );
+
+  --gradient-cta: linear-gradient(
+    135deg,
+    #f3aa50 0%,
+    #e8922e 50%,
+    #dd7e1a 100%
   );
 
   /* Shadows */
-  --shadow-elegant: 0 20px 60px -20px rgba(17, 24, 39, 0.12);
-  --shadow-glow: 0 0 40px rgba(109, 40, 217, 0.08);
+  --shadow-elegant: 0 20px 60px -20px rgba(243, 170, 80, 0.25);
+  --shadow-glow: 0 0 40px rgba(243, 170, 80, 0.15);
+  --shadow-hover: 0 25px 50px -12px rgba(243, 170, 80, 0.3);
 }
-
 .dark {
   --background: oklch(0.12 0 0);
   --foreground: oklch(0.98 0 0);
@@ -181,6 +190,7 @@
 }
 
 @layer utilities {
+  .text-body { @apply text-xs md:text-sm; }
   .font-display { font-family: var(--font-display); }
   .text-gradient-brand {
     background: var(--gradient-brand);

@@ -36,7 +36,7 @@ export default function Contact({
   };
 
   return (
-    <section id="contact" className="py-32" style={{ backgroundColor: "var(--background)" }}>
+    <section id="contact" className="py-16 md:py-32" style={{ backgroundColor: "var(--background)" }}>
       <div className="container mx-auto px-6 max-w-screen-xl">
         <div className="flex flex-col justify-between gap-10 lg:flex-row lg:gap-20">
 
@@ -49,7 +49,7 @@ export default function Contact({
               >
                 {title}
               </h1>
-              <p style={{ color: "var(--muted-foreground)" }}>{description}</p>
+              <p className="text-body" style={{ color: "var(--muted-foreground)" }}>{description}</p>
             </div>
 
             <div className="mx-auto w-fit lg:mx-0 space-y-4">
@@ -73,7 +73,7 @@ export default function Contact({
                 </div>
                 <div>
                   <p className="text-sm font-semibold mb-1" style={{ color: "var(--foreground)" }}>Visit Us</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--muted-foreground)" }}>{address}</p>
+                  <p className="text-body leading-relaxed" style={{ color: "var(--muted-foreground)" }}>{address}</p>
                 </div>
               </div>
 
@@ -92,12 +92,12 @@ export default function Contact({
                   <p className="text-sm font-semibold mb-1" style={{ color: "var(--foreground)" }}>Call Us</p>
                   <a
                     href={`tel:${phone}`}
-                    className="text-sm hover:opacity-80 transition-opacity"
+                    className="text-body hover:opacity-80 transition-opacity"
                     style={{ color: "var(--muted-foreground)" }}
                   >
                     {phone}
                   </a>
-                  <p className="text-xs mt-0.5" style={{ color: "var(--muted-foreground)", opacity: 0.6 }}>
+                  <p className="text-body mt-0.5" style={{ color: "var(--muted-foreground)", opacity: 0.6 }}>
                     Mon–Fri, 9 AM – 6 PM
                   </p>
                 </div>
@@ -118,12 +118,12 @@ export default function Contact({
                   <p className="text-sm font-semibold mb-1" style={{ color: "var(--foreground)" }}>Email Us</p>
                   <a
                     href={`mailto:${email}`}
-                    className="text-sm underline hover:opacity-80 transition-opacity"
+                    className="text-body underline hover:opacity-80 transition-opacity"
                     style={{ color: "var(--muted-foreground)" }}
                   >
                     {email}
                   </a>
-                  <p className="text-xs mt-0.5" style={{ color: "var(--muted-foreground)", opacity: 0.6 }}>
+                  <p className="text-body mt-0.5" style={{ color: "var(--muted-foreground)", opacity: 0.6 }}>
                     We reply within 24 hours
                   </p>
                 </div>
@@ -170,12 +170,12 @@ export default function Contact({
             {/* Form header */}
             <div className="px-8 py-6" style={{ backgroundColor: "var(--primary)" }}>
               <h3 className="text-xl font-bold text-white">Send a Message</h3>
-              <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.75)" }}>
+              <p className="text-body mt-1" style={{ color: "rgba(255,255,255,0.75)" }}>
                 We'll get back to you within 24 hours
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-8 flex flex-col gap-5 flex-1">
+            <form onSubmit={handleSubmit} className="p-6 flex flex-col gap-5 flex-1">
               {isSubmitted && (
                 <div
                   className="p-4 rounded text-sm"
