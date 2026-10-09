@@ -1,96 +1,102 @@
-import { Users } from "lucide-react";
-import recruiter from '@/assets/recruiter.png';
+import { Users, ArrowRight, FileText, CheckCircle2, Sparkles, PhoneCall } from "lucide-react";
+import recruiter from "@/assets/recruiter.png";
 
 export default function CTA() {
   return (
-    <section className="py-16 md:py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#fef9f0] to-[#fff5e6]/10">
-      <div className="max-w-6xl mx-auto">
-        {/* Main Card Container - Clean, elevated like a modern app card */}
-        <div 
-          className="relative overflow-hidden bg-white rounded"
+    <section className="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
+      <div className="container mx-auto">
+        {/* Main High-Impact Banner Card */}
+        <div
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white shadow-2xl border border-slate-800"
           data-aos="zoom-in"
         >
-          <div className="flex flex-col lg:flex-row">
-            {/* Right Area - Image with modern floating elements - MOVED FIRST for mobile */}
-            <div className="relative lg:w-[380px] bg-gradient-to-br from-[#fff8f0] to-[#fff2e5] overflow-hidden order-first lg:order-last">
-              {/* Decorative circle */}
-              <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#f3aa50]/5" />
-              <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-[#f3aa50]/5" />
-              
-              {/* Image Container */}
-              <div className="relative h-full flex items-end justify-center pt-8 lg:pt-16 pb-6 px-6">
-                <img 
-                  src={recruiter} 
-                  alt="SS MATRIX Recruiter" 
-                  className="w-full max-w-[280px] h-auto object-contain drop-shadow-xl mx-auto"
+          {/* Ambient Glows */}
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-10 -left-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="flex flex-col lg:flex-row items-center justify-between">
+
+            {/* Left Content Area */}
+            <div className="flex-1 p-8 sm:p-12 lg:p-14 relative z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold tracking-wider uppercase mb-4 border border-amber-500/30">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                Ready to Accelerate Growth?
+              </span>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight mb-4">
+                Looking for Exceptional Talent or Your Next Big Opportunity?
+              </h2>
+
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mb-8">
+                Partner with SS MATRIX for bespoke talent acquisition and IT development. We turn hiring bottlenecks into sustainable competitive advantage.
+              </p>
+
+              {/* Stats & Trust Row */}
+              <div className="flex flex-wrap items-center gap-6 mb-8 pt-6 border-t border-slate-800">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold text-xs">
+                    ✓
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-white">300+ Enterprises</div>
+                    <div className="text-[11px] text-slate-400">Trust our hiring rigor</div>
+                  </div>
+                </div>
+
+                <div className="hidden sm:block w-px h-8 bg-slate-800" />
+
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold text-xs">
+                    <Users className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-white">5,000+ Placements</div>
+                    <div className="text-[11px] text-slate-400">Pan-India talent reach</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3.5">
+                <a
+                  href="#contact"
+                  className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-display font-bold text-xs sm:text-sm text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-lg shadow-amber-500/20 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  <span>Hire Top Talent</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+
+                <a
+                  href="mailto:hr@ssmatrix.in"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-slate-700 hover:border-slate-500 bg-slate-900/60 text-white font-semibold text-xs sm:text-sm hover:bg-slate-800 transition-all duration-200"
+                >
+                  <FileText className="w-4 h-4 text-amber-400" />
+                  <span>Submit Candidate Resume</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Recruiter Visual Area */}
+            <div className="relative lg:w-[420px] flex items-end justify-center pt-8 pb-0 px-6 overflow-hidden">
+              <div className="relative">
+                <img
+                  src={recruiter}
+                  alt="SS MATRIX Senior Recruiter"
+                  className="w-full max-w-[320px] h-auto object-contain drop-shadow-2xl relative z-10"
                 />
-                
-                {/* Floating badge */}
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 lg:left-auto lg:right-6 lg:bottom-8 lg:translate-x-0 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg border border-gray-100">
+
+                {/* Floating Status Pill */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 bg-slate-900/95 backdrop-blur-md rounded-2xl px-4 py-2 shadow-xl border border-slate-700/80 whitespace-nowrap">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-xs font-semibold text-gray-800">Active Now</span>
-                    <span className="text-xs text-gray-400">•</span>
-                    <span className="text-xs font-medium text-[#f3aa50]">12 openings</span>
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-xs font-bold text-white">Active Mandates</span>
+                    <span className="text-xs text-slate-500">•</span>
+                    <span className="text-xs font-semibold text-amber-400">120+ Open Roles</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Left Content Area */}
-            <div className="flex-1 p-6 md:p-12 lg:p-14">
-              {/* Main Heading */}
-              <h2 className="mb-2 text-2xl font-bold md:text-3xl lg:text-4xl leading-tight"
-                style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 500, lineHeight: 1.3, color: "var(--foreground)", marginBottom: "0.4rem" }}
-              >
-                Looking For The Right Talent Or Career Opportunity?
-              </h2>
-              
-              {/* Description */}
-              <p className="mt-4 text-gray-500 text-base md:text-sm leading-relaxed max-w-md">
-                Partner with SS MATRIX and experience professional recruitment and technology solutions designed to accelerate growth.
-              </p>
-              
-              {/* Stats Row */}
-              <div className="mt-8 flex flex-wrap items-center gap-6">
-                <div className="flex items-center gap-2">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} className="w-8 h-8 rounded-full bg-[#f3aa50]/20 border-2 border-white flex items-center justify-center">
-                        <span className="text-xs font-medium text-[#f3aa50]">✓</span>
-                      </div>
-                    ))}
-                  </div>
-                  <span className="text-sm text-gray-600">500+ Companies</span>
-                </div>
-                <div className="w-px h-6 bg-gray-200" />
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-[#f3aa50]/20 flex items-center justify-center">
-                    <Users className="w-4 h-4 text-[#f3aa50]" aria-hidden />
-                  </div>
-                  <span className="text-sm text-gray-600">10K+ Job Seekers</span>
-                </div>
-              </div>
-              
-              {/* Action Buttons */}
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <a 
-                  href="#contact" 
-                  className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-[#f3aa50] text-white font-semibold shadow-md hover:bg-[#e89a3a] transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  <span>Contact Us</span>
-                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </a>
-                <a 
-                  href="mailto:hr@ssmatrix.in" 
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-md border border-gray-300 bg-white text-gray-700 font-medium hover:border-[#f3aa50] hover:text-[#f3aa50] transition-all duration-300"
-                >
-                  Submit Resume
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>

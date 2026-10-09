@@ -1,73 +1,89 @@
-"use client";
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Calendar, TrendingUp, DollarSign, BookOpen, ArrowUpRight, ArrowRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ArrowRight,
+  Sparkles,
+  Calendar,
+  Clock,
+  GraduationCap,
+  Users,
+  Briefcase,
+  Award,
+} from "lucide-react";
+
 import gallery1 from "../../assets/gallery_1.png";
 import gallery2 from "../../assets/gallery_2.png";
 import gallery3 from "../../assets/gallery_3.png";
 import gallery4 from "../../assets/gallery_4.png";
 import gallery5 from "../../assets/gallery_5.png";
-import gallery6 from "../../assets/gallery_6.png"
+import gallery6 from "../../assets/gallery_6.png";
 
-
-const items = [
+const articles = [
   {
-    cat: "Recruitment Drives",
-    title: "The Ultimate Guide to Budgeting 2024",
-    description: "Master the art of budgeting with our comprehensive guide.",
-    icon: DollarSign,
-    type: "News | Insights",
+    category: "Campus Drives",
+    title: "Campus Placement Drives: Bridging the Engineering Talent Gap",
+    desc: "How structured campus recruitment drives help top universities place 500+ freshers annually in tier-1 IT enterprises.",
     image: gallery1,
+    icon: GraduationCap,
+    date: "March 2026",
+    readTime: "4 min read",
   },
   {
-    cat: "Corporate Events",
-    title: "Top Investment Strategies for Growth",
-    description: "Discover the best investment strategies to build wealth.",
-    icon: TrendingUp,
-    type: "Insights",
+    category: "Leadership Hiring",
+    title: "Executive Search: Finding Transformational C-Suite Tech Leaders",
+    desc: "Key frameworks for evaluating cultural alignment, technical foresight, and board-level chemistry in executive candidates.",
     image: gallery2,
+    icon: Award,
+    date: "February 2026",
+    readTime: "5 min read",
   },
   {
-    cat: "Training Programs",
-    title: "Understanding Cryptocurrency Basics",
-    description: "Get a clear understanding of the risks and rewards.",
-    icon: BookOpen,
-    type: "News | Insights",
+    category: "IT Staffing",
+    title: "The Surge in AI & Cloud Engineering Demand Across South India",
+    desc: "Analysis of hiring velocity in Chennai, Bengaluru, and Hyderabad for full-stack, DevOps, and machine learning engineers.",
     image: gallery3,
+    icon: Briefcase,
+    date: "January 2026",
+    readTime: "3 min read",
   },
   {
-    cat: "Student Placements",
-    title: "How to Reduce Your Debt Fast",
-    description: "Effective strategies to improve financial health.",
-    icon: DollarSign,
-    type: "Insights",
+    category: "HR Advisory",
+    title: "Contract-to-Hire: Scaling High-Volume Teams with Low Overhead",
+    desc: "Why flexible staffing models are empowering modern enterprises to maintain operational agility without compliance risk.",
     image: gallery4,
+    icon: Users,
+    date: "December 2025",
+    readTime: "4 min read",
   },
   {
-    cat: "Office Activities",
-    title: "The Future of Remote Work",
-    description: "What it means for business operations.",
-    icon: Calendar,
-    type: "Insights",
+    category: "Corporate Events",
+    title: "Building Workplace Excellence & 90-Day Retention Milestones",
+    desc: "Best practices from SS MATRIX's candidate care program that achieve industry-leading 98% placement retention.",
     image: gallery5,
+    icon: Sparkles,
+    date: "November 2025",
+    readTime: "3 min read",
   },
   {
-    cat: "Recruitment Drives",
-    title: "AI in Talent Acquisition",
-    description: "Revolutionizing the way companies hire top talent.",
-    icon: TrendingUp,
-    type: "News | Insights",
-    image:gallery6,
+    category: "Campus Drives",
+    title: "Student Project Mentoring & Industry Transition Bootcamps",
+    desc: "Preparing final-year computer science students for enterprise software standards through hands-on capstone mentoring.",
+    image: gallery6,
+    icon: GraduationCap,
+    date: "October 2025",
+    readTime: "5 min read",
   },
 ];
 
 export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(3);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Handle responsive items per view
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 640) {
         setItemsPerView(1);
       } else if (window.innerWidth < 1024) {
         setItemsPerView(2);
@@ -80,185 +96,156 @@ export default function Gallery() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Auto-slide every 2 seconds with infinite loop
+  // Smooth auto slide with pause on hover
   useEffect(() => {
+    if (isPaused) return;
+
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => {
-        // Calculate total slides available
-        const maxIndex = Math.max(0, items.length - itemsPerView);
-        
-        // If at the end, loop back to beginning
-        if (prevIndex >= maxIndex) {
-          return 0;
-        }
-        // Otherwise move to next
-        return prevIndex + 1;
+      setCurrentIndex((prev) => {
+        const max = Math.max(0, articles.length - itemsPerView);
+        return prev >= max ? 0 : prev + 1;
       });
-    }, 2000);
+    }, 4000);
 
     return () => clearInterval(interval);
-  }, [itemsPerView, items.length]);
+  }, [itemsPerView, isPaused]);
 
-  const maxIndex = Math.max(0, items.length - itemsPerView);
-  const canScrollPrev = currentIndex > 0;
-  const canScrollNext = currentIndex < maxIndex;
-
-  const nextSlide = () => {
-    if (canScrollNext) {
-      setCurrentIndex((prev) => prev + 1);
-    } else {
-      // Loop to beginning
-      setCurrentIndex(0);
-    }
-  };
+  const maxIndex = Math.max(0, articles.length - itemsPerView);
 
   const prevSlide = () => {
-    if (canScrollPrev) {
-      setCurrentIndex((prev) => prev - 1);
-    } else {
-      // Loop to end
-      setCurrentIndex(maxIndex);
-    }
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : maxIndex));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : 0));
   };
 
   return (
-    <section id="gallery" className="py-16 md:py-20" style={{ backgroundColor: "var(--background)" }}>
-      <div className="container mx-auto px-6">
+    <section
+      id="gallery"
+      className="py-20 md:py-28 bg-white relative overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
-        <div className="mb-8 flex flex-col justify-between md:flex-row md:items-end">
-          <div>
-            <h2
-              className="mb-2 text-2xl font-bold md:text-3xl lg:text-4xl leading-tight"
-              style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: 500, lineHeight: 1.3, color: "var(--foreground)", marginBottom: "0.4rem" }}
-            >
-              Latest{" "}
-              <span className="bg-gradient-to-r from-brand-purple to-brand-orange bg-clip-text text-transparent">
-              insights and trends
+        {/* ── Section Header ── */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div data-aos="fade-right">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold tracking-wider uppercase mb-3 border border-amber-200">
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+              Insights & Gallery
             </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">
+              Workforce Trends &{" "}
+              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-amber-600 bg-clip-text text-transparent">
+                Campus Highlights
+              </span>
             </h2>
-            
-            <a
-              href="#"
-              className="group inline-flex items-center gap-1 text-body font-medium mt-2"
-              style={{ color: "var(--primary)" }}
-            >
-              Book a demo
-              <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            <p className="mt-3 text-slate-600 text-base max-w-xl">
+              Stay ahead with our latest analysis on talent market dynamics, campus recruitment drives, and corporate hiring strategies.
+            </p>
           </div>
 
-          {/* Nav Buttons */}
-          <div className="flex items-center gap-2 mt-4 md:mt-0">
+          {/* Nav Controls */}
+          <div className="flex items-center gap-3" data-aos="fade-left">
             <button
               onClick={prevSlide}
-              className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
-              style={{
-                backgroundColor: "var(--card)",
-                border: "1px solid var(--border)",
-                color: "var(--foreground)",
-              }}
+              aria-label="Previous slide"
+              className="w-10 h-10 rounded-full border border-slate-300 hover:border-amber-500 hover:bg-amber-50 flex items-center justify-center text-slate-700 hover:text-amber-600 transition-all cursor-pointer shadow-xs"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={nextSlide}
-              className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
-              style={{
-                backgroundColor: "var(--card)",
-                border: "1px solid var(--border)",
-                color: "var(--foreground)",
-              }}
+              aria-label="Next slide"
+              className="w-10 h-10 rounded-full border border-slate-300 hover:border-amber-500 hover:bg-amber-50 flex items-center justify-center text-slate-700 hover:text-amber-600 transition-all cursor-pointer shadow-xs"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Carousel */}
-      <div className="overflow-hidden px-6">
-        <div
-          className="flex gap-4 transition-transform duration-500 ease-out"
-          style={{
-            transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
-          }}
-        >
-          {items.map((it, i) => (
-            <a
-              key={i}
-              href="#read-more"
-              className="group flex-shrink-0 flex flex-col transition-transform duration-300"
-              style={{ width: `calc(${100 / itemsPerView}% - 0.75rem)` }}
-            >
-              {/* Image - smaller size, no hover scale */}
-              <div className="rounded-lg overflow-hidden" style={{ borderRadius: "var(--radius)" }}>
-                <img
-                  src={it.image}
-                  alt={it.title}
-                  className="w-full h-auto object-cover"
-                  style={{ maxHeight: "230px" }}
-                />
-              </div>
-
-              {/* Content - compact */}
-              <div className="pt-3 flex flex-col flex-1">
-                {/* Category + icon row */}
-                <div className="flex items-center gap-1.5 mb-1.5">
-                  <div
-                    className="w-5 h-5 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: "var(--accent)" }}
-                  >
-                    <it.icon className="w-2.5 h-2.5" style={{ color: "var(--primary)" }} />
+        {/* ── Carousel Slider ── */}
+        <div className="overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-out"
+            style={{
+              transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+            }}
+          >
+            {articles.map((item, idx) => (
+              <div
+                key={idx}
+                className="px-3 shrink-0"
+                style={{ width: `${100 / itemsPerView}%` }}
+              >
+                <div className="rounded-3xl bg-white border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-xl hover:border-amber-300 transition-all duration-300 h-full flex flex-col group">
+                  {/* Card Image */}
+                  <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-100">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-amber-300 text-[11px] font-semibold flex items-center gap-1.5 border border-slate-800">
+                      <item.icon className="w-3 h-3" />
+                      <span>{item.category}</span>
+                    </div>
                   </div>
-                  <span
-                    className="text-[10px] font-semibold tracking-wide uppercase"
-                    style={{ color: "var(--primary)" }}
-                  >
-                    {it.cat}
-                  </span>
-                </div>
 
-                {/* Title - smaller */}
-                <h3
-                  className="text-sm font-semibold leading-snug mb-1 line-clamp-2 md:text-base"
-                  style={{ fontFamily: "var(--font-display)", color: "var(--foreground)" }}
-                >
-                  {it.title}
-                </h3>
+                  {/* Card Content */}
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      {/* Meta dates */}
+                      <div className="flex items-center gap-4 text-[11px] text-slate-400 font-medium mb-3">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-3.5 h-3.5" /> {item.date}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3.5 h-3.5" /> {item.readTime}
+                        </span>
+                      </div>
 
-                {/* Description - shorter */}
-                <p
-                  className="text-xs leading-relaxed line-clamp-2 mb-3"
-                  style={{ color: "var(--muted-foreground)" }}
-                >
-                  {it.description}
-                </p>
+                      <h3 className="font-display font-bold text-base sm:text-lg text-slate-900 group-hover:text-amber-600 transition-colors line-clamp-2 mb-2 leading-snug">
+                        {item.title}
+                      </h3>
 
-                {/* Read more - smaller */}
-                <div className="mt-auto flex items-center text-body font-medium" style={{ color: "var(--foreground)" }}>
-                  Read more
-                  <ArrowRight className="ml-1 w-3 h-3 transition-transform group-hover:translate-x-1" />
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 mb-5">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    <a
+                      href="#contact"
+                      className="pt-4 border-t border-slate-100 inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 group-hover:text-amber-700 transition-colors mt-auto"
+                    >
+                      <span>Read Full Insight</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
                 </div>
               </div>
-            </a>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Dot Indicators ── */}
+        <div className="flex justify-center gap-2 mt-8">
+          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentIndex(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                currentIndex === i
+                  ? "w-8 bg-amber-500"
+                  : "w-2 bg-slate-200 hover:bg-slate-300"
+              }`}
+            />
           ))}
         </div>
-      </div>
 
-      {/* Dots indicator */}
-      <div className="flex justify-center gap-1.5 mt-6">
-        {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentIndex(i)}
-            className="h-1.5 rounded-full transition-all duration-300"
-            style={{
-              backgroundColor: currentIndex === i ? "var(--primary)" : "var(--border)",
-              width: currentIndex === i ? "1.5rem" : "0.5rem",
-            }}
-          />
-        ))}
       </div>
     </section>
   );

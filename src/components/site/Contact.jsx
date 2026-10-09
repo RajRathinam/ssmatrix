@@ -1,34 +1,56 @@
-"use client";
-import { MapPin, Phone, Mail, Linkedin, Facebook, Instagram, Send } from "lucide-react";
 import { useState } from "react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Linkedin,
+  Facebook,
+  Instagram,
+  Send,
+  MessageSquare,
+  Clock,
+  Sparkles,
+  CheckCircle2,
+  ExternalLink,
+} from "lucide-react";
 
-export default function Contact({
-  title = "Contact Us",
-  description = "We are available for questions, feedback, or collaboration opportunities. Let us know how we can help!",
-  phone = "+1 763 1683",
-  email = "Moneta@gmail.com",
-  address = "123 Innovation Avenue, Suite 456, Tech District, San Francisco, CA 94107",
-  web = { label: "ssmatrix.com", url: "#" },
-}) {
+export default function Contact() {
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
+    name: "",
     email: "",
-    subject: "",
+    phone: "",
+    inquiryType: "Employer (Looking to Hire)",
+    company: "",
     message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const inquiryOptions = [
+    "Employer (Looking to Hire)",
+    "Job Seeker (Submit Resume)",
+    "IT & Web Development",
+    "Campus Placement Partnership",
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      setFormData({ firstname: "", lastname: "", email: "", subject: "", message: "" });
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1000);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        inquiryType: "Employer (Looking to Hire)",
+        company: "",
+        message: "",
+      });
+      setTimeout(() => setIsSubmitted(false), 6000);
+    }, 1200);
   };
 
   const handleChange = (e) => {
@@ -36,303 +58,306 @@ export default function Contact({
   };
 
   return (
-    <section id="contact" className="py-16 md:py-32" style={{ backgroundColor: "var(--background)" }}>
-      <div className="container mx-auto px-6 max-w-screen-xl">
-        <div className="flex flex-col justify-between gap-10 lg:flex-row lg:gap-20">
+    <section id="contact" className="py-20 md:py-28 bg-white relative overflow-hidden">
+      {/* Ambient background glows */}
+      <div className="absolute top-10 left-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
-          {/* Left — Contact Details */}
-          <div className="mx-auto flex max-w-sm flex-col justify-between gap-10">
-            <div className="text-center lg:text-left">
-              <h1
-                className="mb-2 text-5xl font-semibold lg:mb-1 lg:text-6xl"
-                style={{ fontFamily: "var(--font-display)", color: "var(--foreground)" }}
-              >
-                {title}
-              </h1>
-              <p className="text-body" style={{ color: "var(--muted-foreground)" }}>{description}</p>
-            </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold tracking-wider uppercase mb-3 border border-amber-200">
+            <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+            Let's Start a Conversation
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">
+            Get in Touch with{" "}
+            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-amber-600 bg-clip-text text-transparent">
+              Our Experts
+            </span>
+          </h2>
+          <p className="mt-4 text-slate-600 text-base leading-relaxed">
+            Whether you need to staff a team of senior engineers, find your next leadership career step, or build high-performance web applications, we are here to help.
+          </p>
+        </div>
 
-            <div className="mx-auto w-fit lg:mx-0 space-y-4">
-              <h3
-                className="mb-4 text-center text-2xl font-semibold lg:text-left"
-                style={{ color: "var(--foreground)" }}
-              >
-                Contact Details
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+          {/* ── Left Column: Contact Details (5 cols) ── */}
+          <div className="lg:col-span-5 flex flex-col gap-6" data-aos="fade-right">
+            {/* Quick Cards */}
+            <div className="p-7 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-sm space-y-6">
+              <h3 className="text-xl font-bold font-display text-slate-900">
+                Corporate Office
               </h3>
 
               {/* Address */}
-              <div
-                className="flex items-start gap-4 rounded p-5 border transition-all duration-300 hover:shadow-sm"
-                style={{ backgroundColor: "var(--card)", borderColor: "var(--border)" }}
-              >
-                <div
-                  className="w-10 h-10 rounded flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: "var(--accent)", color: "var(--primary)" }}
-                >
-                  <MapPin className="w-4 h-4" />
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
+                  <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold mb-1" style={{ color: "var(--foreground)" }}>Visit Us</p>
-                  <p className="text-body leading-relaxed" style={{ color: "var(--muted-foreground)" }}>{address}</p>
+                  <h4 className="text-xs font-bold tracking-wider text-slate-500 uppercase mb-0.5">
+                    Visit Our Chennai Office
+                  </h4>
+                  <p className="text-sm font-semibold text-slate-900 leading-snug">
+                    Anna Nagar West Extension
+                  </p>
+                  <p className="text-xs text-slate-600 mt-0.5">
+                    Chennai, Tamil Nadu – 600101, India
+                  </p>
                 </div>
               </div>
 
               {/* Phone */}
-              <div
-                className="flex items-start gap-4 rounded p-5 border transition-all duration-300 hover:shadow-sm"
-                style={{ backgroundColor: "var(--card)", borderColor: "var(--border)" }}
-              >
-                <div
-                  className="w-10 h-10 rounded flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: "var(--accent)", color: "var(--primary)" }}
-                >
-                  <Phone className="w-4 h-4" />
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
+                  <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold mb-1" style={{ color: "var(--foreground)" }}>Call Us</p>
+                  <h4 className="text-xs font-bold tracking-wider text-slate-500 uppercase mb-0.5">
+                    Direct Phone Line
+                  </h4>
                   <a
-                    href={`tel:${phone}`}
-                    className="text-body hover:opacity-80 transition-opacity"
-                    style={{ color: "var(--muted-foreground)" }}
+                    href="tel:+919865348416"
+                    className="text-sm font-bold text-slate-900 hover:text-amber-600 transition-colors block"
                   >
-                    {phone}
+                    +91 98653 48416
                   </a>
-                  <p className="text-body mt-0.5" style={{ color: "var(--muted-foreground)", opacity: 0.6 }}>
-                    Mon–Fri, 9 AM – 6 PM
-                  </p>
+                  <span className="text-[11px] text-slate-500">
+                    Mon – Sat, 9:00 AM – 6:30 PM IST
+                  </span>
                 </div>
               </div>
 
               {/* Email */}
-              <div
-                className="flex items-start gap-4 rounded p-5 border transition-all duration-300 hover:shadow-sm"
-                style={{ backgroundColor: "var(--card)", borderColor: "var(--border)" }}
-              >
-                <div
-                  className="w-10 h-10 rounded flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: "var(--accent)", color: "var(--primary)" }}
-                >
-                  <Mail className="w-4 h-4" />
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
+                  <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold mb-1" style={{ color: "var(--foreground)" }}>Email Us</p>
+                  <h4 className="text-xs font-bold tracking-wider text-slate-500 uppercase mb-0.5">
+                    Official Email
+                  </h4>
                   <a
-                    href={`mailto:${email}`}
-                    className="text-body underline hover:opacity-80 transition-opacity"
-                    style={{ color: "var(--muted-foreground)" }}
+                    href="mailto:hr@ssmatrix.in"
+                    className="text-sm font-bold text-slate-900 hover:text-amber-600 transition-colors block"
                   >
-                    {email}
+                    hr@ssmatrix.in
                   </a>
-                  <p className="text-body mt-0.5" style={{ color: "var(--muted-foreground)", opacity: 0.6 }}>
-                    We reply within 24 hours
-                  </p>
+                  <span className="text-[11px] text-slate-500">
+                    Guaranteed response within 24 hours
+                  </span>
                 </div>
               </div>
 
-              {/* Social */}
-              <div
-                className="rounded p-5 border"
-                style={{ backgroundColor: "var(--accent)", borderColor: "var(--border)" }}
-              >
-                <p className="text-sm font-semibold mb-3" style={{ color: "var(--foreground)" }}>
-                  Follow Our Journey
-                </p>
-                <div className="flex gap-3">
-                  {[
-                    { Icon: Linkedin, href: "#", label: "LinkedIn" },
-                    { Icon: Facebook, href: "#", label: "Facebook" },
-                    { Icon: Instagram, href: "#", label: "Instagram" },
-                  ].map(({ Icon, href, label }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      aria-label={label}
-                      className="w-9 h-9 rounded flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:opacity-80"
-                      style={{
-                        backgroundColor: "var(--card)",
-                        color: "var(--primary)",
-                        border: "1px solid var(--border)",
-                      }}
-                    >
-                      <Icon className="w-4 h-4" />
-                    </a>
-                  ))}
-                </div>
+              {/* Instant WhatsApp Action */}
+              <div className="pt-4 border-t border-slate-200/80">
+                <a
+                  href="https://wa.me/919865348416"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2.5 py-3 px-5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-sm"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Chat on WhatsApp Directly</span>
+                  <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+                </a>
+              </div>
+            </div>
+
+            {/* Social Channels */}
+            <div className="p-6 rounded-3xl bg-slate-900 text-white flex items-center justify-between">
+              <div>
+                <h4 className="text-sm font-bold font-display">Connect Online</h4>
+                <p className="text-xs text-slate-400 mt-0.5">Follow our hiring updates</p>
+              </div>
+
+              <div className="flex gap-2.5">
+                {[
+                  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+                  { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+                  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+                ].map(({ icon: Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-300 flex items-center justify-center transition-all duration-200"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Right — Form */}
+          {/* ── Right Column: Interactive Consultation Form (7 cols) ── */}
           <div
-            className="mx-auto flex max-w-screen-md flex-col flex-1 rounded border overflow-hidden"
-            style={{ borderColor: "var(--border)", backgroundColor: "var(--card)" }}
+            className="lg:col-span-7 rounded-3xl bg-white border border-slate-200 shadow-xl overflow-hidden"
+            data-aos="fade-left"
           >
-            {/* Form header */}
-            <div className="px-8 py-6" style={{ backgroundColor: "var(--primary)" }}>
-              <h3 className="text-xl font-bold text-white">Send a Message</h3>
-              <p className="text-body mt-1" style={{ color: "rgba(255,255,255,0.75)" }}>
-                We'll get back to you within 24 hours
+            {/* Form Top Header */}
+            <div className="p-7 sm:p-8 bg-gradient-to-r from-slate-950 to-indigo-950 text-white border-b border-slate-800">
+              <span className="text-amber-400 text-xs font-bold tracking-widest uppercase mb-1 block">
+                Quick Response Mandate
+              </span>
+              <h3 className="text-2xl font-bold font-display text-white">
+                Request a Talent or Project Proposal
+              </h3>
+              <p className="text-slate-300 text-xs sm:text-sm mt-1">
+                Fill out the details below and an SS MATRIX executive will reach out within 24 hours.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 flex flex-col gap-5 flex-1">
+            <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-5">
               {isSubmitted && (
-                <div
-                  className="p-4 rounded text-sm"
-                  style={{
-                    backgroundColor: "var(--accent)",
-                    color: "var(--primary)",
-                    border: "1px solid var(--border)",
-                  }}
-                >
-                  ✨ Thanks for reaching out! We'll be in touch soon.
+                <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs sm:text-sm flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                  <div>
+                    <span className="font-bold block">Inquiry Submitted Successfully!</span>
+                    <span>Our team will contact you at {formData.phone || "your contact details"} shortly.</span>
+                  </div>
                 </div>
               )}
 
-              {/* First + Last Name */}
-              <div className="flex gap-4">
-                <div className="grid w-full gap-1.5">
-                  <label
-                    htmlFor="firstname"
-                    className="text-sm font-medium"
-                    style={{ color: "var(--foreground)" }}
-                  >
-                    First Name
+              {/* Inquiry Type Pills */}
+              <div>
+                <label className="text-xs font-bold text-slate-700 block mb-2">
+                  What can we help you with?
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {inquiryOptions.map((opt) => (
+                    <button
+                      type="button"
+                      key={opt}
+                      onClick={() => setFormData({ ...formData, inquiryType: opt })}
+                      className={`px-3 py-2 rounded-xl text-xs font-semibold text-left transition-all border cursor-pointer ${
+                        formData.inquiryType === opt
+                          ? "bg-amber-50 text-amber-900 border-amber-400 font-bold"
+                          : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100"
+                      }`}
+                    >
+                      {opt}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Name & Phone */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="text-xs font-semibold text-slate-700 block mb-1.5">
+                    Your Full Name *
                   </label>
                   <input
                     type="text"
-                    id="firstname"
-                    name="firstname"
+                    id="name"
+                    name="name"
                     required
-                    value={formData.firstname}
+                    value={formData.name}
                     onChange={handleChange}
-                    placeholder="First Name"
-                    className="w-full px-4 py-2.5 rounded text-sm transition-all duration-200 focus:outline-none focus:ring-2"
-                    style={{
-                      border: "1px solid var(--border)",
-                      backgroundColor: "var(--background)",
-                      color: "var(--foreground)",
-                    }}
+                    placeholder="e.g. Ramesh Krishnan"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-sm focus:outline-none focus:border-amber-500 focus:bg-white transition-all"
                   />
                 </div>
-                <div className="grid w-full gap-1.5">
-                  <label
-                    htmlFor="lastname"
-                    className="text-sm font-medium"
-                    style={{ color: "var(--foreground)" }}
-                  >
-                    Last Name
+
+                <div>
+                  <label htmlFor="phone" className="text-xs font-semibold text-slate-700 block mb-1.5">
+                    Phone / Mobile Number *
                   </label>
                   <input
-                    type="text"
-                    id="lastname"
-                    name="lastname"
+                    type="tel"
+                    id="phone"
+                    name="phone"
                     required
-                    value={formData.lastname}
+                    value={formData.phone}
                     onChange={handleChange}
-                    placeholder="Last Name"
-                    className="w-full px-4 py-2.5 rounded text-sm transition-all duration-200 focus:outline-none focus:ring-2"
-                    style={{
-                      border: "1px solid var(--border)",
-                      backgroundColor: "var(--background)",
-                      color: "var(--foreground)",
-                    }}
+                    placeholder="+91 98765 43210"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-sm focus:outline-none focus:border-amber-500 focus:bg-white transition-all"
                   />
                 </div>
               </div>
 
-              {/* Email */}
-              <div className="grid gap-1.5">
-                <label htmlFor="email" className="text-sm font-medium" style={{ color: "var(--foreground)" }}>
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Email"
-                  className="w-full px-4 py-2.5 rounded text-sm transition-all duration-200 focus:outline-none focus:ring-2"
-                  style={{
-                    border: "1px solid var(--border)",
-                    backgroundColor: "var(--background)",
-                    color: "var(--foreground)",
-                  }}
-                />
-              </div>
+              {/* Email & Organization */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="email" className="text-xs font-semibold text-slate-700 block mb-1.5">
+                    Work Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="name@company.com"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-sm focus:outline-none focus:border-amber-500 focus:bg-white transition-all"
+                  />
+                </div>
 
-              {/* Subject */}
-              <div className="grid gap-1.5">
-                <label htmlFor="subject" className="text-sm font-medium" style={{ color: "var(--foreground)" }}>
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="Subject"
-                  className="w-full px-4 py-2.5 rounded text-sm transition-all duration-200 focus:outline-none focus:ring-2"
-                  style={{
-                    border: "1px solid var(--border)",
-                    backgroundColor: "var(--background)",
-                    color: "var(--foreground)",
-                  }}
-                />
+                <div>
+                  <label htmlFor="company" className="text-xs font-semibold text-slate-700 block mb-1.5">
+                    Company Name / Institution
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    placeholder="e.g. Cognizant / Self"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-sm focus:outline-none focus:border-amber-500 focus:bg-white transition-all"
+                  />
+                </div>
               </div>
 
               {/* Message */}
-              <div className="grid gap-1.5">
-                <label htmlFor="message" className="text-sm font-medium" style={{ color: "var(--foreground)" }}>
-                  Message
+              <div>
+                <label htmlFor="message" className="text-xs font-semibold text-slate-700 block mb-1.5">
+                  How can we assist you? (Role specifications, headcount, timeline) *
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   required
-                  rows={5}
+                  rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Type your message here."
-                  className="w-full px-4 py-2.5 rounded text-sm transition-all duration-200 focus:outline-none focus:ring-2 resize-none"
-                  style={{
-                    border: "1px solid var(--border)",
-                    backgroundColor: "var(--background)",
-                    color: "var(--foreground)",
-                  }}
+                  placeholder="Provide any details about your hiring volume, skill requirements, or project details..."
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-sm focus:outline-none focus:border-amber-500 focus:bg-white transition-all resize-none"
                 />
               </div>
 
-              {/* Submit */}
+              {/* Submit CTA */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded text-sm font-semibold transition-all duration-300 hover:opacity-90 hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
-                style={{
-                  backgroundColor: "var(--primary)",
-                  color: "var(--primary-foreground)",
-                }}
+                className="w-full py-3.5 px-6 rounded-2xl font-display font-bold text-sm text-slate-950 bg-amber-400 hover:bg-amber-300 disabled:opacity-60 transition-all shadow-md shadow-amber-500/20 flex items-center justify-center gap-2 cursor-pointer active:scale-98"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Sending...
+                    <div className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
+                    <span>Submitting Inquiry...</span>
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    Send Message
+                    <span>Submit Inquiry</span>
                   </>
                 )}
               </button>
 
-              <p className="text-center text-xs" style={{ color: "var(--muted-foreground)" }}>
-                We respect your privacy. No spam, ever.
-              </p>
+              <div className="flex items-center justify-center gap-4 text-[11px] text-slate-400 pt-2">
+                <span>🔒 100% Confidential</span>
+                <span>•</span>
+                <span>⚡ 24-Hour Callback</span>
+                <span>•</span>
+                <span>No Spam Guarantee</span>
+              </div>
             </form>
           </div>
 

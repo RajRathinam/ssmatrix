@@ -1,283 +1,286 @@
-import { Users, Briefcase, BookOpenCheck, Crown, Handshake, GraduationCap, Code2, Cpu, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import {
+  Users,
+  Briefcase,
+  BookOpenCheck,
+  Crown,
+  Handshake,
+  GraduationCap,
+  Code2,
+  Cpu,
+  ArrowRight,
+  CheckCircle2,
+  Sparkles,
+} from "lucide-react";
+
 import statImage from "../../assets/500.png";
 import recruitmentImage from "../../assets/recruitment.png";
 import placementImage from "../../assets/placement.png";
 import itImage from "../../assets/it.png";
 
-const stats = [
-  { n: "12+", l: "Years exp." },
-  { n: "98%", l: "Client retention", accent: true },
-  { n: "50+", l: "Clients" },
-];
+const categories = ["All Services", "Recruitment & Staffing", "Technology & IT Solutions"];
 
-const placed = [
-  { initials: "RK", name: "Ravi Kumar", role: "Software Engineer" },
-  { initials: "PS", name: "Priya S.", role: "HR Manager", green: true },
+const allServices = [
+  {
+    id: "recruitment",
+    category: "Recruitment & Staffing",
+    title: "End-to-End Recruitment",
+    desc: "Comprehensive talent sourcing, candidate screening, technical evaluation, and seamless onboarding across all industry verticals.",
+    icon: Users,
+    color: "amber",
+    image: recruitmentImage,
+    tags: ["Full-Cycle Hiring", "Technical Screening", "Pan-India Sourcing"],
+    featured: true,
+  },
+  {
+    id: "executive-search",
+    category: "Recruitment & Staffing",
+    title: "Executive Search & C-Suite",
+    desc: "Discreet and targeted leadership hiring for CXOs, VPs, directors, and strategic business heads with proven track records.",
+    icon: Crown,
+    color: "purple",
+    tags: ["Leadership Hiring", "Confidential Search", "C-Suite Mapping"],
+  },
+  {
+    id: "staffing",
+    category: "Recruitment & Staffing",
+    title: "Staffing & Contract-to-Hire",
+    desc: "Agile contract staffing, temp-to-perm, and rapid workforce ramp-up to support dynamic project demands without overhead.",
+    icon: Briefcase,
+    color: "amber",
+    tags: ["Contract Staffing", "C2H Models", "Rapid Ramp-Up"],
+  },
+  {
+    id: "hr-consulting",
+    category: "Recruitment & Staffing",
+    title: "Strategic HR Consultancy",
+    desc: "Organizational design, HR compliance audits, compensation benchmarking, performance management, and policy formulations.",
+    icon: BookOpenCheck,
+    color: "purple",
+    stats: [
+      { num: "12+ Yrs", label: "Domain Expertise" },
+      { num: "99%", label: "Statutory Compliance" },
+      { num: "250+", label: "Audits Conducted" },
+    ],
+    tags: ["Policy Formulation", "Payroll Advisory", "Compliance Audits"],
+    wide: true,
+  },
+  {
+    id: "campus-placement",
+    category: "Recruitment & Staffing",
+    title: "Campus Hiring & Placement Drives",
+    desc: "Partnering with top engineering and management universities across South India to recruit career-ready fresh talent.",
+    icon: Handshake,
+    color: "amber",
+    image: placementImage,
+    tags: ["University Drives", "Fresher Assessments", "Bootcamps"],
+    featured: true,
+  },
+  {
+    id: "web-dev",
+    category: "Technology & IT Solutions",
+    title: "Web & Digital Application Development",
+    desc: "Modern, high-performance web applications, responsive corporate portals, and SaaS interfaces built with modern tech stacks.",
+    icon: Code2,
+    color: "indigo",
+    tags: ["React & Next.js", "Full-Stack Dev", "Modern UX/UI", "API Integration"],
+  },
+  {
+    id: "it-consulting",
+    category: "Technology & IT Solutions",
+    title: "Enterprise IT Services & Cloud",
+    desc: "End-to-end digital transformation, cloud migrations, DevOps enablement, and enterprise application maintenance with 24/7 SLA.",
+    icon: Cpu,
+    color: "purple",
+    image: itImage,
+    tags: ["Cloud Migration", "24/7 Managed IT", "Cybersecurity", "DevOps"],
+    featured: true,
+  },
+  {
+    id: "final-year-projects",
+    category: "Technology & IT Solutions",
+    title: "Final Year Academic Tech Projects",
+    desc: "Hands-on technical mentoring, IEEE research project guidance, and practical software implementation for engineering students.",
+    icon: GraduationCap,
+    color: "amber",
+    tags: ["AI/ML Models", "IoT & Embedded", "Cloud Architectures"],
+  },
 ];
-
-const itTags = ["Cloud Migration", "24/7 Support", "ERP Solutions"];
 
 export default function Services() {
+  const [selectedCategory, setSelectedCategory] = useState("All Services");
+
+  const filteredServices = allServices.filter((service) => {
+    if (selectedCategory === "All Services") return true;
+    return service.category === selectedCategory;
+  });
+
   return (
-    <section
-      id="services"
-      style={{
-        padding: "3rem 1rem",
-        background: "var(--muted)",
-        position: "relative",
-        overflow: "hidden",
-        fontFamily: "inherit",
-      }}
-      className="sm:py-16 sm:px-6 md:py-20 md:px-8"
-    >
-      {/* decorative blobs - hidden on mobile */}
-      <div className="hidden sm:block" style={{ position: "absolute", width: 320, height: 320, borderRadius: "50%", background: "var(--brand-purple)", opacity: 0.07, top: -80, right: -80, pointerEvents: "none" }} />
-      <div className="hidden sm:block" style={{ position: "absolute", width: 200, height: 200, borderRadius: "50%", background: "var(--brand-orange)", opacity: 0.06, bottom: -60, left: 40, pointerEvents: "none" }} />
+    <section id="services" className="py-20 md:py-28 bg-slate-50 relative overflow-hidden">
+      {/* Ambient background glows */}
+      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-amber-500/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-96 h-96 bg-indigo-500/8 rounded-full blur-3xl pointer-events-none" />
 
-      <div style={{ maxWidth: 1080, margin: "0 auto", position: "relative" }}>
-        {/* Header */}
-        <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.15em", color: "var(--primary)", textTransform: "uppercase", marginBottom: "0.6rem" }}>
-          Our Services
-        </p>
-        <h2 style={{ fontSize: "clamp(1.5rem, 5vw, 2.2rem)", fontWeight: 500, lineHeight: 1.3, color: "var(--foreground)", marginBottom: "0.75rem" }}>
-          Comprehensive Solutions For{" "}
-          <span className="bg-gradient-to-r from-brand-purple to-brand-orange bg-clip-text text-transparent">
-            Modern Businesses
-          </span>
-        </h2>
-        <p className="text-body sm:max-w-[460px]" style={{ color: "var(--muted-foreground)", maxWidth: "100%", lineHeight: 1.6 }}>
-          End-to-end HR, IT, and digital services tailored for growing organizations.
-        </p>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
 
-        {/* Bento Grid - Responsive */}
-        <div 
-          style={{ 
-            display: "grid", 
-            gap: 12, 
-            marginTop: "2rem",
-          }}
-          className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 sm:gap-4 lg:gap-5"
-        >
+        {/* ── Section Header ── */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div data-aos="fade-right">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold tracking-wider uppercase mb-3 border border-amber-200">
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+              What We Do
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">
+              Comprehensive Talent &{" "}
+              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-amber-600 bg-clip-text text-transparent">
+                Technology Solutions
+              </span>
+            </h2>
+            <p className="mt-3 text-slate-600 text-base max-w-2xl">
+              From high-impact executive recruitment to enterprise-grade web development, SS MATRIX accelerates your organizational growth.
+            </p>
+          </div>
 
-          {/* Big stat card with image */}
-          <Card span={2} style={{ padding: 0, overflow: "hidden", minHeight: 180 }} className="col-span-1 sm:col-span-2">
-            <img 
-              src={statImage} 
-              alt="500+ Placements" 
-              style={{ 
-                width: "100%", 
-                height: "100%", 
-                objectFit: "cover",
-                display: "block"
-              }} 
-            />
-          </Card>
-
-          {/* Recruitment */}
-          <Card span={2} style={{ position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }} className="col-span-1 sm:col-span-2">
-            <img 
-              src={recruitmentImage} 
-              alt="Recruitment" 
-              style={{ 
-                position: "absolute",
-                top: 0,
-                right: 0,
-                width: "100px",
-                height: "auto",
-                pointerEvents: "none",
-                opacity: 0.8
-              }}
-              className="sm:w-[140px]"
-            />
-            <IconBox color="var(--accent)" icon={<Users size={20} color="var(--primary)" />} />
-            <h3 style={h3}>Recruitment Services</h3>
-            <p className="text-body" style={{ color: "var(--muted-foreground)", lineHeight: 1.6, flex: 1, fontSize: "14px" }}>End-to-end hiring from sourcing to onboarding.</p>
-            <LearnMore />
-          </Card>
-
-          {/* Staffing */}
-          <Card span={2} style={{ display: "flex", flexDirection: "column" }} className="col-span-1 sm:col-span-2">
-            <IconBox color="var(--accent)" icon={<Briefcase size={20} style={{ color: "var(--brand-orange)" }} />} />
-            <h3 style={h3}>Staffing Solutions</h3>
-            <p className="text-body" style={{ color: "var(--muted-foreground)", lineHeight: 1.6, flex: 1, fontSize: "14px" }}>Temporary, permanent and contract staffing at scale.</p>
-            <LearnMore />
-          </Card>
-
-          {/* Executive Search */}
-          <Card span={2} style={{ display: "flex", flexDirection: "column" }} className="col-span-1 sm:col-span-2">
-            <IconBox color="var(--accent)" icon={<Crown size={20} style={{ color: "var(--brand-orange)" }} />} />
-            <h3 style={h3}>Executive Search</h3>
-            <p className="text-body" style={{ color: "var(--muted-foreground)", lineHeight: 1.6, flex: 1, fontSize: "14px" }}>Leadership hiring for critical C-suite positions.</p>
-            <LearnMore />
-          </Card>
-
-       {/* HR Consultancy wide with stats */}
-<Card span={4} style={{ position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }} className="col-span-1 sm:col-span-4">
-  <div className="hidden sm:block" style={{
-    position: "absolute",
-    top: -50,
-    right: -50,
-    width: 150,
-    height: 150,
-    border: "2px solid var(--brand-purple)",
-    opacity: 0.06,
-    transform: "rotate(45deg)",
-    pointerEvents: "none"
-  }} />
-  <div className="hidden sm:block" style={{
-    position: "absolute",
-    bottom: -50,
-    left: -50,
-    width: 150,
-    height: 150,
-    border: "2px solid var(--brand-orange)",
-    opacity: 0.06,
-    transform: "rotate(45deg)",
-    pointerEvents: "none"
-  }} />
-  
-  <IconBox color="var(--accent)" icon={<BookOpenCheck size={20} style={{ color: "var(--primary)" }} />} />
-  <h3 style={h3}>HR Consultancy</h3>
-  <p className="text-body" style={{ color: "var(--muted-foreground)", lineHeight: 1.6, fontSize: "14px" }}>Strategic HR solutions for organizational growth and compliance.</p>
-  
-  {/* Stats - flex column on mobile, flex row on desktop */}
-  <div className="flex flex-col sm:flex-row gap-2 sm:gap-10 mt-4 mb-3">
-    {stats.map((s) => (
-      <div key={s.l} style={{ flex: 1, background: "var(--muted)", borderRadius: 8, padding: "0.6rem", textAlign: "center", position: "relative", zIndex: 1 }}>
-        <div style={{ fontSize: "1.1rem", fontWeight: 500, color: s.accent ? "var(--brand-orange)" : "var(--primary)" }} className="sm:text-[1.15rem]">{s.n}</div>
-        <div className="text-body sm:text-sm" style={{ color: "var(--muted-foreground)", marginTop: 2, fontSize: "12px" }}>{s.l}</div>
-      </div>
-    ))}
-  </div>
-  <LearnMore />
-</Card>
-
-          {/* Placement with avatars */}
-          <Card span={4} style={{ position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }} className="col-span-1 sm:col-span-4">
-            <img 
-              src={placementImage} 
-              alt="Placement" 
-              style={{ 
-                position: "absolute",
-                top: 0,
-                right: 20,
-                width: "180px",
-                height: "auto",
-                opacity: 0.3,
-                pointerEvents: "none"
-              }}
-              className="sm:right-100 sm:w-[260px] sm:opacity-50"
-            />
-            <IconBox color="var(--accent)" icon={<Handshake size={20} style={{ color: "var(--brand-orange)" }} />} />
-            <h3 style={h3}>Placement Services</h3>
-            <p className="text-body" style={{ color: "var(--muted-foreground)", lineHeight: 1.6, fontSize: "14px" }}>Connecting top talent with the right opportunities.</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: "0.75rem", marginBottom: "0.75rem" }}>
-              {placed.map((m) => (
-                <div key={m.initials} style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                  <div style={{ width: 32, height: 32, borderRadius: "50%", background: m.green ? "var(--brand-orange)" : "var(--accent)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 500, color: m.green ? "var(--primary-foreground)" : "var(--primary)", flexShrink: 0 }}>{m.initials}</div>
-                  <div style={{ flex: 1 }}>
-                    <div className="text-body" style={{ fontWeight: 500, color: "var(--foreground)", fontSize: "13px" }}>{m.name}</div>
-                    <div className="text-body" style={{ color: "var(--muted-foreground)", fontSize: "11px" }}>{m.role}</div>
-                  </div>
-                  <span style={{ fontSize: 10, background: "var(--accent)", color: "var(--primary)", borderRadius: 20, padding: "2px 8px" }}>Placed ✓</span>
-                </div>
-              ))}
-            </div>
-            <LearnMore />
-          </Card>
-
-          {/* Final Year Projects */}
-          <Card span={2} style={{ display: "flex", flexDirection: "column" }} className="col-span-1 sm:col-span-2">
-            <IconBox color="var(--accent)" icon={<GraduationCap size={20} style={{ color: "var(--primary)" }} />} />
-            <h3 style={h3}>Final Year Projects</h3>
-            <p className="text-body" style={{ color: "var(--muted-foreground)", lineHeight: 1.6, flex: 1, fontSize: "14px" }}>Innovative project solutions for engineering students.</p>
-            <LearnMore />
-          </Card>
-
-          {/* Web Dev with wave */}
-          <Card span={3} style={{ display: "flex", flexDirection: "column" }} className="col-span-1 sm:col-span-3">
-            <div style={{ display: "flex", gap: 5, marginBottom: 10 }}>
-              {[0,1,2].map(i => <span key={i} style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--border)", display: "block" }} className="sm:w-2 sm:h-2" />)}
-            </div>
-            <IconBox color="var(--accent)" icon={<Code2 size={20} style={{ color: "var(--primary)" }} />} />
-            <h3 style={h3}>Web Design & Development</h3>
-            <p className="text-body" style={{ color: "var(--muted-foreground)", lineHeight: 1.6, flex: 1, fontSize: "14px" }}>Modern websites, landing pages, and business applications built to convert.</p>
-            <svg viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", marginTop: "0.75rem", marginBottom: "0.75rem", opacity: 0.85 }}>
-              <path d="M0 45 C30 20 60 50 90 30 S150 10 180 35 S240 55 270 25 L300 30 L300 60 L0 60 Z" fill="var(--accent)" opacity="0.6" />
-              <path d="M0 45 C30 20 60 50 90 30 S150 10 180 35 S240 55 270 25 L300 30" stroke="var(--primary)" strokeWidth="2" fill="none" />
-            </svg>
-            <LearnMore />
-          </Card>
-
-          {/* IT Services */}
-          <Card span={3} style={{ position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }} className="col-span-1 sm:col-span-3">
-            <img 
-              src={itImage} 
-              alt="IT Services" 
-              style={{ 
-                position: "absolute",
-                bottom: 0,
-                right: 0,
-                width: "100px",
-                height: "auto",
-                opacity: 0.3,
-                pointerEvents: "none"
-              }}
-              className="sm:w-[150px] sm:opacity-50"
-            />
-            <IconBox color="var(--accent)" icon={<Cpu size={20} style={{ color: "var(--brand-orange)" }} />} />
-            <h3 style={h3}>IT Services</h3>
-            <p className="text-body" style={{ color: "var(--muted-foreground)", lineHeight: 1.6, flex: 1, fontSize: "14px" }}>Digital transformation, cloud solutions, and technology consulting for modern enterprises.</p>
-            <div style={{ display: "flex", gap: 6, marginTop: "0.75rem", marginBottom: "0.75rem", flexWrap: "wrap" }}>
-              {itTags.map((t, i) => (
-                <span key={t} style={{ fontSize: 10, borderRadius: 20, padding: "2px 8px", background: i === 1 ? "var(--accent)" : "var(--muted)", color: i === 1 ? "var(--primary)" : "var(--brand-orange)", fontWeight: 500 }} className="sm:text-[11px] sm:px-3 sm:py-1">{t}</span>
-              ))}
-            </div>
-            <LearnMore />
-          </Card>
-
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap gap-2" data-aos="fade-left">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                  selectedCategory === cat
+                    ? "bg-slate-900 text-white shadow-md"
+                    : "bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-100"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* ── Highlight Banner Card (Placements Showcase) ── */}
+        <div
+          className="mb-8 rounded-3xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 p-1 shadow-lg overflow-hidden"
+          data-aos="fade-up"
+        >
+          <div className="bg-slate-950 rounded-[22px] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-5">
+              <div className="hidden sm:block w-24 h-24 rounded-2xl overflow-hidden shrink-0 border border-amber-500/40">
+                <img src={statImage} alt="500+ Placements Milestone" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <span className="px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-semibold border border-amber-500/30">
+                  MILESTONE RECORD
+                </span>
+                <h3 className="text-white text-xl sm:text-2xl font-bold font-display mt-2">
+                  5,000+ Verified Candidates Placed Across India
+                </h3>
+                <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-xl">
+                  Proven hiring speed with an average turnaround of 48 hours for niche tech and leadership roles.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm transition-all duration-200 shrink-0 shadow-md"
+            >
+              <span>Submit Hiring Mandate</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+
+        {/* ── Dynamic Bento Grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredServices.map((service, index) => {
+            const Icon = service.icon;
+            const isWide = service.wide;
+
+            return (
+              <div
+                key={service.id}
+                className={`rounded-3xl bg-white border border-slate-200/90 p-7 shadow-xs hover:shadow-xl hover:border-amber-300 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ${
+                  isWide ? "md:col-span-2 lg:col-span-2" : "col-span-1"
+                }`}
+                data-aos="fade-up"
+                data-aos-delay={index * 50}
+              >
+                {/* Decorative image background if present */}
+                {service.image && (
+                  <div className="absolute top-0 right-0 w-32 sm:w-44 h-auto opacity-15 group-hover:opacity-25 transition-opacity pointer-events-none">
+                    <img src={service.image} alt="" className="w-full h-auto object-contain" />
+                  </div>
+                )}
+
+                <div>
+                  {/* Icon & Category Pill */}
+                  <div className="flex items-center justify-between gap-3 mb-5">
+                    <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 border border-amber-200 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors duration-300 shadow-xs">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="text-[11px] font-semibold tracking-wider text-slate-500 uppercase px-2.5 py-1 rounded-full bg-slate-100">
+                      {service.category}
+                    </span>
+                  </div>
+
+                  {/* Title & Description */}
+                  <h3 className="text-xl font-bold font-display text-slate-900 group-hover:text-amber-600 transition-colors mb-2.5">
+                    {service.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-5">
+                    {service.desc}
+                  </p>
+
+                  {/* Optional Stats Row for Wide Card */}
+                  {service.stats && (
+                    <div className="grid grid-cols-3 gap-3 my-5 p-4 rounded-2xl bg-slate-50 border border-slate-200/60">
+                      {service.stats.map((st, i) => (
+                        <div key={i} className="text-center">
+                          <div className="text-lg sm:text-xl font-bold font-display text-amber-600">
+                            {st.num}
+                          </div>
+                          <div className="text-[11px] text-slate-500 font-medium mt-0.5">
+                            {st.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {service.tags.map((t, idx) => (
+                      <span
+                        key={idx}
+                        className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200/70"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Card CTA Link */}
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 group-hover:text-amber-700 transition-colors"
+                  >
+                    <span>Request Details</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <span className="text-[10px] text-slate-400 font-semibold tracking-wider uppercase">
+                    SS MATRIX
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );
 }
-
-/* ── helpers ── */
-
-function Card({ children, span, style, className }) {
-  return (
-    <div style={{
-      background: "var(--card)",
-      border: "1px solid var(--border)",
-      borderRadius: "var(--radius)",
-      padding: "1rem",
-      position: "relative",
-      overflow: "hidden",
-      transition: "border-color 0.2s",
-      display: "flex",
-      flexDirection: "column",
-      ...style,
-    }}
-    className={`${className} w-full`}>
-      {children}
-    </div>
-  );
-}
-
-function IconBox({ color, icon }) {
-  return (
-    <div style={{ width: 40, height: 40, borderRadius: "var(--radius)", background: color, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "0.75rem" }} className="sm:w-11 sm:h-11 sm:mb-4">
-      {icon}
-    </div>
-  );
-}
-
-function LearnMore() {
-  return (
-    <a href="#contact"  style={{ display: "inline-flex", alignItems: "center", gap: 4, fontWeight: 500, color: "var(--primary)", marginTop: "0.5rem", textDecoration: "none", alignSelf: "flex-start", fontSize: "13px" }} className="sm:text-sm sm:mt-3 text-body">
-      Learn more <ArrowRight size={12} className="sm:w-[13px] sm:h-[13px]" />
-    </a>
-  );
-}
-
-const h3 = { fontSize: "15px", fontWeight: 500, color: "var(--foreground)", marginBottom: "0.35rem" };
