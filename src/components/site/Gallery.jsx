@@ -59,7 +59,7 @@ const articles = [
   {
     category: "Corporate Events",
     title: "Building Workplace Excellence & 90-Day Retention Milestones",
-    desc: "Best practices from SS MATRIX's candidate care program that achieve industry-leading 98% placement retention.",
+    desc: "Best practices from AIT3CH360's candidate care program that achieve industry-leading 98% placement retention.",
     image: gallery5,
     icon: Sparkles,
     date: "November 2025",

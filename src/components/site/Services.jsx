@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import {
   Users,
   Briefcase,
-  BookOpenCheck,
-  Crown,
-  Handshake,
-  GraduationCap,
+  ShieldCheck,
   Code2,
-  Cpu,
+  Cloud,
+  BarChart3,
+  Bot,
+  Lock,
+  Compass,
+  Building,
+  GraduationCap,
   ArrowRight,
   CheckCircle2,
   Sparkles,
+  Check,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 import statImage from "../../assets/500.png";
@@ -18,266 +25,612 @@ import recruitmentImage from "../../assets/recruitment.png";
 import placementImage from "../../assets/placement.png";
 import itImage from "../../assets/it.png";
 
-const categories = ["All Services", "Recruitment & Staffing", "Technology & IT Solutions"];
+const categories = ["All Services", "Manpower Solutions", "Technology Consulting"];
 
 const allServices = [
+  // ── MANPOWER SOLUTIONS ──
   {
-    id: "recruitment",
-    category: "Recruitment & Staffing",
-    title: "End-to-End Recruitment",
-    desc: "Comprehensive talent sourcing, candidate screening, technical evaluation, and seamless onboarding across all industry verticals.",
-    icon: Users,
+    id: "perm-recruitment",
+    category: "Manpower Solutions",
+    title: "Permanent Recruitment",
+    desc: "Sourcing, screening and closing talent for junior to leadership roles across technical and commercial disciplines.",
+    icon: GraduationCap,
+    badge: "Core Workforce",
     color: "amber",
     image: recruitmentImage,
-    tags: ["Full-Cycle Hiring", "Technical Screening", "Pan-India Sourcing"],
-    featured: true,
-  },
-  {
-    id: "executive-search",
-    category: "Recruitment & Staffing",
-    title: "Executive Search & C-Suite",
-    desc: "Discreet and targeted leadership hiring for CXOs, VPs, directors, and strategic business heads with proven track records.",
-    icon: Crown,
-    color: "purple",
-    tags: ["Leadership Hiring", "Confidential Search", "C-Suite Mapping"],
-  },
-  {
-    id: "staffing",
-    category: "Recruitment & Staffing",
-    title: "Staffing & Contract-to-Hire",
-    desc: "Agile contract staffing, temp-to-perm, and rapid workforce ramp-up to support dynamic project demands without overhead.",
-    icon: Briefcase,
-    color: "amber",
-    tags: ["Contract Staffing", "C2H Models", "Rapid Ramp-Up"],
-  },
-  {
-    id: "hr-consulting",
-    category: "Recruitment & Staffing",
-    title: "Strategic HR Consultancy",
-    desc: "Organizational design, HR compliance audits, compensation benchmarking, performance management, and policy formulations.",
-    icon: BookOpenCheck,
-    color: "purple",
-    stats: [
-      { num: "12+ Yrs", label: "Domain Expertise" },
-      { num: "99%", label: "Statutory Compliance" },
-      { num: "250+", label: "Audits Conducted" },
+    features: [
+      "Role definition support",
+      "Technical & HR screening",
+      "Replacement guarantee",
     ],
-    tags: ["Policy Formulation", "Payroll Advisory", "Compliance Audits"],
-    wide: true,
+    ctaText: "Request Talent",
   },
   {
-    id: "campus-placement",
-    category: "Recruitment & Staffing",
-    title: "Campus Hiring & Placement Drives",
-    desc: "Partnering with top engineering and management universities across South India to recruit career-ready fresh talent.",
-    icon: Handshake,
-    color: "amber",
-    image: placementImage,
-    tags: ["University Drives", "Fresher Assessments", "Bootcamps"],
-    featured: true,
-  },
-  {
-    id: "web-dev",
-    category: "Technology & IT Solutions",
-    title: "Web & Digital Application Development",
-    desc: "Modern, high-performance web applications, responsive corporate portals, and SaaS interfaces built with modern tech stacks.",
-    icon: Code2,
+    id: "contract-staffing",
+    category: "Manpower Solutions",
+    title: "Contract Staffing",
+    desc: "Skilled professionals on our payroll, deployed to your project for the exact duration you need with zero overhead.",
+    icon: Briefcase,
+    badge: "Agile Scale",
     color: "indigo",
-    tags: ["React & Next.js", "Full-Stack Dev", "Modern UX/UI", "API Integration"],
+    features: [
+      "Fast ramp-up within 48 hours",
+      "Flexible project tenure",
+      "Convert-to-hire options",
+    ],
+    ctaText: "Hire Contractors",
   },
   {
-    id: "it-consulting",
-    category: "Technology & IT Solutions",
-    title: "Enterprise IT Services & Cloud",
-    desc: "End-to-end digital transformation, cloud migrations, DevOps enablement, and enterprise application maintenance with 24/7 SLA.",
-    icon: Cpu,
-    color: "purple",
+    id: "payroll-compliance",
+    category: "Manpower Solutions",
+    title: "Payroll & Compliance",
+    desc: "Accurate payroll, statutory compliance, and smooth employee onboarding handled for your entire workforce.",
+    icon: ShieldCheck,
+    badge: "Risk Mitigation",
+    color: "emerald",
+    features: [
+      "PF, ESI, TDS & tax filing support",
+      "Smooth onboarding & exit formalities",
+      "Transparent monthly reporting",
+    ],
+    ctaText: "Discuss Compliance",
+  },
+  {
+    id: "it-staffing",
+    category: "Manpower Solutions",
+    title: "IT Staffing",
+    desc: "Developers, QA testers, DevOps, data engineers, and cloud architects matched on real, proven technical ability.",
+    icon: Code2,
+    badge: "Tech Talent",
+    color: "blue",
     image: itImage,
-    tags: ["Cloud Migration", "24/7 Managed IT", "Cybersecurity", "DevOps"],
-    featured: true,
+    features: [
+      "Full-stack & specialized engineers",
+      "Rigorous technical vetting",
+      "Immediate-joiner talent pool",
+    ],
+    ctaText: "Hire Tech Talent",
   },
   {
-    id: "final-year-projects",
-    category: "Technology & IT Solutions",
-    title: "Final Year Academic Tech Projects",
-    desc: "Hands-on technical mentoring, IEEE research project guidance, and practical software implementation for engineering students.",
-    icon: GraduationCap,
+    id: "non-it-bulk",
+    category: "Manpower Solutions",
+    title: "Non-IT & Bulk Hiring",
+    desc: "Operations, sales, customer support, back-office, and plant staffing delivered at scale with high speed.",
+    icon: Building,
+    badge: "High Volume",
+    color: "purple",
+    image: placementImage,
+    features: [
+      "High-volume talent pipelines",
+      "Multi-city sourcing footprint",
+      "Quick-turnaround placement drives",
+    ],
+    ctaText: "Scale Your Team",
+  },
+  {
+    id: "rpo",
+    category: "Manpower Solutions",
+    title: "Recruitment Process Outsourcing (RPO)",
+    desc: "We run your hiring process end to end as an embedded recruitment team directly aligned with your hiring goals.",
+    icon: Users,
+    badge: "Dedicated Pod",
     color: "amber",
-    tags: ["AI/ML Models", "IoT & Embedded", "Cloud Architectures"],
+    features: [
+      "Full lifecycle talent acquisition",
+      "Employer branding & ATS setup",
+      "Measurable cost & time reduction",
+    ],
+    ctaText: "Explore RPO",
+  },
+
+  // ── TECHNOLOGY CONSULTING ──
+  {
+    id: "software-web",
+    category: "Technology Consulting",
+    title: "Software & Web Development",
+    desc: "Custom web applications, portals, mobile apps, and scalable APIs engineered for high performance and maintainability.",
+    icon: Code2,
+    badge: "Engineering",
+    color: "cyan",
+    features: [
+      "Full-stack web & SaaS platforms",
+      "Responsive customer portals & apps",
+      "Secure REST & GraphQL APIs",
+    ],
+    ctaText: "Book Consultation",
+  },
+  {
+    id: "cloud-devops",
+    category: "Technology Consulting",
+    title: "Cloud & DevOps",
+    desc: "Cloud migration, infrastructure automation, modern CI/CD deployment pipelines, and 24x7 monitoring.",
+    icon: Cloud,
+    badge: "Infrastructure",
+    color: "indigo",
+    features: [
+      "AWS, Azure & Google Cloud migration",
+      "Automated CI/CD release pipelines",
+      "24x7 reliability & observability",
+    ],
+    ctaText: "Cloud Assessment",
+  },
+  {
+    id: "data-analytics",
+    category: "Technology Consulting",
+    title: "Data & Analytics",
+    desc: "Data engineering, business intelligence dashboards, and analytics that turn raw telemetry into confident decisions.",
+    icon: BarChart3,
+    badge: "Intelligence",
+    color: "blue",
+    features: [
+      "Data pipeline & warehouse setup",
+      "Executive BI dashboards & KPI tracking",
+      "Predictive modeling & insights",
+    ],
+    ctaText: "Unlock Your Data",
+  },
+  {
+    id: "ai-automation",
+    category: "Technology Consulting",
+    title: "AI & Automation",
+    desc: "Intelligent workflow automation, AI agents, chatbots, and generative tools that eliminate manual friction.",
+    icon: Bot,
+    badge: "AI Powered",
+    color: "purple",
+    features: [
+      "Custom workflow & RPA bots",
+      "Generative AI & LLM integration",
+      "Automated customer support tools",
+    ],
+    ctaText: "Automate Workflows",
+  },
+  {
+    id: "cybersecurity",
+    category: "Technology Consulting",
+    title: "Cybersecurity & Hardening",
+    desc: "Security assessments, vulnerability audits, hardening, and compliance best practices to protect your systems.",
+    icon: Lock,
+    badge: "Protection",
+    color: "emerald",
+    features: [
+      "Security posture & vulnerability audit",
+      "Cloud & server infrastructure hardening",
+      "Access governance & compliance guidance",
+    ],
+    ctaText: "Secure Systems",
+  },
+  {
+    id: "it-strategy",
+    category: "Technology Consulting",
+    title: "IT Strategy & Digital Transformation",
+    desc: "Technology roadmaps, modern architecture reviews, and vendor/tool selection aligned with your business milestones.",
+    icon: Compass,
+    badge: "Advisory",
+    color: "amber",
+    features: [
+      "Tech stack audit & architecture roadmap",
+      "Legacy modernisation blueprints",
+      "Vendor & tool selection advisory",
+    ],
+    ctaText: "Speak With Architect",
   },
 ];
 
 export default function Services() {
   const [selectedCategory, setSelectedCategory] = useState("All Services");
+  const [isPaused, setIsPaused] = useState(false);
 
-  const filteredServices = allServices.filter((service) => {
-    if (selectedCategory === "All Services") return true;
-    return service.category === selectedCategory;
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    containScroll: "trimSnaps",
+    dragFree: false,
+    slidesToScroll: 1,
   });
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState([]);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+
+  const filteredServices =
+    selectedCategory === "All Services"
+      ? allServices
+      : allServices.filter((s) => s.category === selectedCategory);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const scrollTo = useCallback(
+    (index) => {
+      if (emblaApi) emblaApi.scrollTo(index);
+    },
+    [emblaApi]
+  );
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    setScrollSnaps(emblaApi.scrollSnapList());
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
+  // When category changes, reInit and scroll to beginning
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.reInit();
+      emblaApi.scrollTo(0);
+      setScrollSnaps(emblaApi.scrollSnapList());
+    }
+  }, [selectedCategory, emblaApi]);
+
+  // Auto-scroll every 5 seconds (pauses on hover)
+  useEffect(() => {
+    if (!emblaApi || isPaused) return;
+    const timer = setInterval(() => {
+      if (emblaApi.canScrollNext()) {
+        emblaApi.scrollNext();
+      } else {
+        emblaApi.scrollTo(0);
+      }
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [emblaApi, isPaused]);
 
   return (
     <section id="services" className="py-20 md:py-28 bg-slate-50 relative overflow-hidden">
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-amber-500/8 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-indigo-500/8 rounded-full blur-3xl pointer-events-none" />
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/4 -left-40 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* ── Section Header ── */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div data-aos="fade-right">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold tracking-wider uppercase mb-3 border border-amber-200">
-              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-              What We Do
+        <div className="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold tracking-wider uppercase mb-3 border border-amber-200">
+            <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+            What We Do
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">
+            Two Practices.{" "}
+            <span className="bg-gradient-to-r from-amber-500 via-orange-500 to-indigo-600 bg-clip-text text-transparent">
+              One Outcome: Your Growth.
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">
-              Comprehensive Talent &{" "}
-              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-amber-600 bg-clip-text text-transparent">
-                Technology Solutions
-              </span>
-            </h2>
-            <p className="mt-3 text-slate-600 text-base max-w-2xl">
-              From high-impact executive recruitment to enterprise-grade web development, SS MATRIX accelerates your organizational growth.
-            </p>
-          </div>
+          </h2>
+          <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
+            Whether you need to scale your workforce or modernise your technology, our consultants work as an extension of your team.
+          </p>
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-2" data-aos="fade-left">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                  selectedCategory === cat
-                    ? "bg-slate-900 text-white shadow-md"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-100"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Quick Dual Practice Highlights */}
+          <div className="mt-8 grid sm:grid-cols-2 gap-4 text-left">
+            <div
+              onClick={() =>
+                setSelectedCategory(
+                  selectedCategory === "Manpower Solutions" ? "All Services" : "Manpower Solutions"
+                )
+              }
+              className={`p-5 rounded-2xl border transition-all cursor-pointer ${
+                selectedCategory === "Manpower Solutions"
+                  ? "bg-amber-50/80 border-amber-400 shadow-sm"
+                  : "bg-white border-slate-200/80 hover:border-amber-300"
+              }`}
+            >
+              <div className="flex items-center gap-2.5 text-amber-600 font-bold text-sm mb-1">
+                <span className="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center">👥</span>
+                <span>Manpower Solutions</span>
+              </div>
+              <p className="text-xs text-slate-600">
+                Hire faster. Hire better. Stay compliant. Permanent, contract, IT & bulk workforce solutions.
+              </p>
+            </div>
+
+            <div
+              onClick={() =>
+                setSelectedCategory(
+                  selectedCategory === "Technology Consulting" ? "All Services" : "Technology Consulting"
+                )
+              }
+              className={`p-5 rounded-2xl border transition-all cursor-pointer ${
+                selectedCategory === "Technology Consulting"
+                  ? "bg-indigo-50/80 border-indigo-400 shadow-sm"
+                  : "bg-white border-slate-200/80 hover:border-indigo-300"
+              }`}
+            >
+              <div className="flex items-center gap-2.5 text-indigo-600 font-bold text-sm mb-1">
+                <span className="w-7 h-7 rounded-lg bg-indigo-100 flex items-center justify-center">⚙️</span>
+                <span>Technology Consulting</span>
+              </div>
+              <p className="text-xs text-slate-600">
+                Technology that works for your business. Software, cloud, DevOps, data, AI & automation.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* ── Highlight Banner Card (Placements Showcase) ── */}
+        {/* ── Category Filter Pills & Carousel Controls Bar ── */}
         <div
-          className="mb-8 rounded-3xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 p-1 shadow-lg overflow-hidden"
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8"
           data-aos="fade-up"
         >
-          <div className="bg-slate-950 rounded-[22px] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-5">
-              <div className="hidden sm:block w-24 h-24 rounded-2xl overflow-hidden shrink-0 border border-amber-500/40">
-                <img src={statImage} alt="500+ Placements Milestone" className="w-full h-full object-cover" />
+          {/* Filter Pills */}
+          <div className="inline-flex p-1.5 rounded-full bg-slate-200/80 border border-slate-300/80 gap-1 flex-wrap justify-center">
+            {categories.map((cat) => {
+              const count =
+                cat === "All Services"
+                  ? allServices.length
+                  : allServices.filter((s) => s.category === cat).length;
+              const isActive = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
+                    isActive
+                      ? "bg-slate-900 text-white shadow-md"
+                      : "text-slate-700 hover:text-slate-900 hover:bg-white/60"
+                  }`}
+                >
+                  <span>{cat}</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold ${
+                      isActive
+                        ? "bg-white/20 text-white"
+                        : "bg-slate-300/80 text-slate-700"
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Prev / Next Header Buttons */}
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-slate-500 font-medium hidden md:inline-block">
+              {filteredServices.length} offerings
+            </span>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={scrollPrev}
+                disabled={!canScrollPrev}
+                aria-label="Previous slide"
+                className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:border-amber-500 hover:bg-amber-50 text-slate-700 hover:text-amber-600 flex items-center justify-center transition-all duration-200 disabled:opacity-30 disabled:pointer-events-none cursor-pointer shadow-xs active:scale-95"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={scrollNext}
+                disabled={!canScrollNext}
+                aria-label="Next slide"
+                className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:border-amber-500 hover:bg-amber-50 text-slate-700 hover:text-amber-600 flex items-center justify-center transition-all duration-200 disabled:opacity-30 disabled:pointer-events-none cursor-pointer shadow-xs active:scale-95"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Services Carousel ── */}
+        <div
+          className="relative group/carousel"
+          data-aos="fade-up"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Side Floating Nav Arrow: Previous (desktop XL) */}
+          <button
+            onClick={scrollPrev}
+            disabled={!canScrollPrev}
+            aria-label="Previous slide"
+            className="hidden xl:flex absolute -left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/95 backdrop-blur border border-slate-200 text-slate-700 hover:text-amber-600 hover:border-amber-400 shadow-lg items-center justify-center transition-all duration-200 disabled:opacity-0 disabled:pointer-events-none cursor-pointer hover:scale-105 active:scale-95"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Side Floating Nav Arrow: Next (desktop XL) */}
+          <button
+            onClick={scrollNext}
+            disabled={!canScrollNext}
+            aria-label="Next slide"
+            className="hidden xl:flex absolute -right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/95 backdrop-blur border border-slate-200 text-slate-700 hover:text-amber-600 hover:border-amber-400 shadow-lg items-center justify-center transition-all duration-200 disabled:opacity-0 disabled:pointer-events-none cursor-pointer hover:scale-105 active:scale-95"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Embla Viewport */}
+          <div className="overflow-hidden py-4 -my-4 px-1 -mx-1" ref={emblaRef}>
+            <div className="flex -ml-6 items-stretch cursor-grab active:cursor-grabbing select-none">
+              {filteredServices.map((service) => {
+                const Icon = service.icon;
+                return (
+                  <div
+                    key={service.id}
+                    className="pl-6 min-w-0 shrink-0 grow-0 basis-[88%] sm:basis-[80%] md:basis-1/2 lg:basis-1/3"
+                  >
+                    <div className="rounded-3xl bg-white border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-amber-300 transition-all duration-300 flex flex-col justify-between p-6 sm:p-7 group relative h-full">
+                      <div>
+                        {/* Top Header */}
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 border border-amber-200/80 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors duration-200">
+                            <Icon className="w-6 h-6" />
+                          </div>
+                          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+                            {service.badge}
+                          </span>
+                        </div>
+
+                        <h3 className="text-xl font-display font-bold text-slate-900 mb-2.5 group-hover:text-amber-600 transition-colors">
+                          {service.title}
+                        </h3>
+
+                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5">
+                          {service.desc}
+                        </p>
+
+                        {/* Bullet points */}
+                        <div className="space-y-2 mb-6 pt-3 border-t border-slate-100">
+                          {service.features.map((feat, fIdx) => (
+                            <div
+                              key={fIdx}
+                              className="flex items-center gap-2 text-xs text-slate-700 font-medium"
+                            >
+                              <Check className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                              <span>{feat}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Card CTA Link */}
+                      <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <a
+                          href="#contact"
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 group-hover:text-amber-700 transition-colors"
+                        >
+                          <span>{service.ctaText}</span>
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </a>
+                        <span className="text-[10px] text-slate-400 font-semibold tracking-wider uppercase">
+                          AIT3CH360
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Dots Pagination & Slide Counter */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 pt-2">
+            <div className="text-xs text-slate-500 font-medium order-2 sm:order-1 flex items-center gap-2">
+              <span className="inline-block w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+              <span>Swipe or click arrows to explore all {filteredServices.length} offerings</span>
+            </div>
+
+            <div className="flex items-center gap-2 order-1 sm:order-2 flex-wrap justify-center">
+              {scrollSnaps.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    index === selectedIndex
+                      ? "w-8 bg-amber-500 shadow-xs"
+                      : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <div className="text-xs font-semibold text-slate-600 order-3 hidden sm:block bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+              {selectedIndex + 1} / {scrollSnaps.length || 1}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Engagement & Delivery Models Showcase ── */}
+        <div className="mt-20 grid lg:grid-cols-2 gap-8" data-aos="fade-up">
+
+          {/* Manpower Engagement Models */}
+          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-600 mb-2">
+                <span>Workforce Engagement Models</span>
               </div>
-              <div>
-                <span className="px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-semibold border border-amber-500/30">
-                  MILESTONE RECORD
-                </span>
-                <h3 className="text-white text-xl sm:text-2xl font-bold font-display mt-2">
-                  5,000+ Verified Candidates Placed Across India
-                </h3>
-                <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-xl">
-                  Proven hiring speed with an average turnaround of 48 hours for niche tech and leadership roles.
-                </p>
+              <h3 className="text-2xl font-display font-bold text-slate-900 mb-2">
+                Choose How You Want to Hire
+              </h3>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
+                Pricing is transparent and agreed in advance. We'll recommend the model that balances cost, speed and risk for your situation.
+              </p>
+
+              <div className="space-y-3 mb-6">
+                {[
+                  { title: "Success-based fee", desc: "Pay only upon successful placement and candidate onboarding" },
+                  { title: "Contract billing", desc: "Transparent monthly rate per resource deployed on your project" },
+                  { title: "Dedicated team", desc: "Exclusive recruiter pod for continuous ongoing hiring volumes" },
+                  { title: "Hybrid model", desc: "Custom mixture tailored to your dynamic staffing lifecycle" },
+                ].map((m, idx) => (
+                  <div key={idx} className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/60 flex items-start gap-3">
+                    <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                    <div>
+                      <div className="text-xs font-bold text-slate-900">{m.title}</div>
+                      <div className="text-[11px] text-slate-500 mt-0.5">{m.desc}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm transition-all duration-200 shrink-0 shadow-md"
+              className="inline-flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm transition-colors shadow-sm"
             >
-              <span>Submit Hiring Mandate</span>
+              <span>Request Talent Consultation</span>
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
-        </div>
 
-        {/* ── Dynamic Bento Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredServices.map((service, index) => {
-            const Icon = service.icon;
-            const isWide = service.wide;
+          {/* Technology Delivery Models */}
+          <div className="p-8 sm:p-10 rounded-3xl bg-slate-900 text-white shadow-xl flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
-            return (
-              <div
-                key={service.id}
-                className={`rounded-3xl bg-white border border-slate-200/90 p-7 shadow-xs hover:shadow-xl hover:border-amber-300 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ${
-                  isWide ? "md:col-span-2 lg:col-span-2" : "col-span-1"
-                }`}
-                data-aos="fade-up"
-                data-aos-delay={index * 50}
-              >
-                {/* Decorative image background if present */}
-                {service.image && (
-                  <div className="absolute top-0 right-0 w-32 sm:w-44 h-auto opacity-15 group-hover:opacity-25 transition-opacity pointer-events-none">
-                    <img src={service.image} alt="" className="w-full h-auto object-contain" />
-                  </div>
-                )}
-
-                <div>
-                  {/* Icon & Category Pill */}
-                  <div className="flex items-center justify-between gap-3 mb-5">
-                    <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 border border-amber-200 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors duration-300 shadow-xs">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <span className="text-[11px] font-semibold tracking-wider text-slate-500 uppercase px-2.5 py-1 rounded-full bg-slate-100">
-                      {service.category}
-                    </span>
-                  </div>
-
-                  {/* Title & Description */}
-                  <h3 className="text-xl font-bold font-display text-slate-900 group-hover:text-amber-600 transition-colors mb-2.5">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-5">
-                    {service.desc}
-                  </p>
-
-                  {/* Optional Stats Row for Wide Card */}
-                  {service.stats && (
-                    <div className="grid grid-cols-3 gap-3 my-5 p-4 rounded-2xl bg-slate-50 border border-slate-200/60">
-                      {service.stats.map((st, i) => (
-                        <div key={i} className="text-center">
-                          <div className="text-lg sm:text-xl font-bold font-display text-amber-600">
-                            {st.num}
-                          </div>
-                          <div className="text-[11px] text-slate-500 font-medium mt-0.5">
-                            {st.label}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {service.tags.map((t, idx) => (
-                      <span
-                        key={idx}
-                        className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200/70"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Card CTA Link */}
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 group-hover:text-amber-700 transition-colors"
-                  >
-                    <span>Request Details</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                  <span className="text-[10px] text-slate-400 font-semibold tracking-wider uppercase">
-                    SS MATRIX
-                  </span>
-                </div>
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2">
+                <span>Technology Delivery Models</span>
               </div>
-            );
-          })}
+              <h3 className="text-2xl font-display font-bold text-white mb-2">
+                Flexible Ways to Work with Us
+              </h3>
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+                Because we also provide manpower, you can pair any technology project with the staffing you need to run it afterwards.
+              </p>
+
+              <div className="space-y-3 mb-6">
+                {[
+                  { title: "Fixed-scope projects", desc: "Defined deliverables, milestones and committed timelines" },
+                  { title: "Dedicated teams", desc: "Engineers working as an extension of your in-house product team" },
+                  { title: "Time & material", desc: "Agile sprints adapted for evolving scopes and fast iterations" },
+                  { title: "Managed services", desc: "Ongoing 24x7 monitoring, maintenance and cloud support" },
+                ].map((m, idx) => (
+                  <div key={idx} className="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex items-start gap-3">
+                    <CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
+                    <div>
+                      <div className="text-xs font-bold text-white">{m.title}</div>
+                      <div className="text-[11px] text-slate-400 mt-0.5">{m.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <a
+              href="#contact"
+              className="relative z-10 inline-flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs sm:text-sm transition-colors shadow-sm"
+            >
+              <span>Book a Technology Consultation</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+
         </div>
 
       </div>

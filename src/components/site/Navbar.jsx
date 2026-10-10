@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Phone, ChevronRight, Sparkles, Clock, ArrowUpRight } from "lucide-react";
-import logo from "@/assets/ssmatrix-logo.png";
+import { Menu, X, Phone, ChevronRight, Sparkles, Clock, ArrowUpRight, Mail, MapPin } from "lucide-react";
+import BrandLogo from "@/components/site/BrandLogo";
 
 const links = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
-  { href: "#why", label: "Why Choose Us" },
+  { href: "#why", label: "Why Us" },
   { href: "#stats", label: "Key Stats" },
-  { href: "#process", label: "Process" },
+  { href: "#process", label: "How We Work" },
   { href: "#testimonials", label: "Testimonials" },
-  { href: "#gallery", label: "Insights" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -23,7 +22,7 @@ export default function Navbar() {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Simple active link spy
+      // Active link spy
       const sections = links.map((l) => document.querySelector(l.href));
       const scrollPos = window.scrollY + 140;
 
@@ -63,24 +62,24 @@ export default function Navbar() {
           <div className="flex items-center gap-2 mx-auto sm:mx-0">
             <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-semibold text-[10px] border border-amber-500/30">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
-              HIRING PARTNER
+              AIT3CH360
             </span>
             <span className="text-slate-300 hidden sm:inline">
-              Connecting Top Indian Talent with Fast-Growing Enterprises
+              Manpower & Technology Consultancy • Madurai, Tamil Nadu, India
             </span>
             <span className="text-amber-300 sm:hidden">
-              Top Talent & IT Solutions
+              People & Technology Partner
             </span>
           </div>
           <div className="hidden sm:flex items-center gap-5 text-slate-300 text-[11px]">
             <span className="flex items-center gap-1.5">
-              <Clock className="w-3 h-3 text-amber-400" /> Mon - Sat: 9:00 AM - 6:30 PM IST
+              <MapPin className="w-3 h-3 text-amber-400" /> Madurai, Tamil Nadu
             </span>
             <a
-              href="tel:+919865348416"
-              className="text-amber-300 hover:text-white transition-colors font-semibold"
+              href="mailto:info@ait3ch360.com"
+              className="text-amber-300 hover:text-white transition-colors font-semibold flex items-center gap-1"
             >
-              +91 98653 48416
+              <Mail className="w-3 h-3" /> info@ait3ch360.com
             </a>
           </div>
         </div>
@@ -101,12 +100,8 @@ export default function Navbar() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           {/* Logo with tagline */}
-          <a href="#home" className="flex items-center gap-3 group">
-            <img
-              src={logo}
-              alt="SS Matrix Consultancy & Development Services"
-              className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-            />
+          <a href="#home" className="flex items-center gap-3 group" aria-label="AIT3CH360 Home">
+            <BrandLogo />
           </a>
 
           {/* Desktop Navigation */}
@@ -132,13 +127,13 @@ export default function Navbar() {
           {/* Right Action Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+919865348416"
+              href="mailto:info@ait3ch360.com"
               className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-200 bg-white font-display font-medium text-xs text-slate-700 hover:border-amber-400 hover:text-amber-600 hover:bg-amber-50/50 shadow-sm transition-all duration-200 whitespace-nowrap"
             >
               <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                <Phone className="w-3 h-3" />
+                <Mail className="w-3 h-3" />
               </span>
-              <span className="font-semibold">+91 98653 48416</span>
+              <span className="font-semibold">info@ait3ch360.com</span>
             </a>
 
             <a
@@ -150,7 +145,7 @@ export default function Navbar() {
             >
               <span className="relative z-10 flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Get Consultation</span>
+                <span>Talk to an Expert</span>
                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
@@ -186,7 +181,7 @@ export default function Navbar() {
       >
         {/* Drawer Header */}
         <div className="flex items-center justify-between p-4 border-b border-slate-100 bg-slate-50/70">
-          <img src={logo} alt="SS Matrix" className="h-8 w-auto" />
+          <BrandLogo className="h-8" />
           <button
             onClick={closeSidebar}
             className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 transition-colors"
@@ -214,11 +209,11 @@ export default function Navbar() {
         {/* Drawer Footer Actions */}
         <div className="p-4 border-t border-slate-100 bg-slate-50/70 space-y-3">
           <a
-            href="tel:+919865348416"
+            href="mailto:info@ait3ch360.com"
             onClick={closeSidebar}
             className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-slate-300 bg-white font-display font-semibold text-xs text-slate-800 hover:border-amber-400 transition-colors shadow-sm"
           >
-            <Phone className="w-3.5 h-3.5 text-amber-600" /> Call +91 98653 48416
+            <Mail className="w-3.5 h-3.5 text-amber-600" /> info@ait3ch360.com
           </a>
           <a
             href="#contact"
@@ -228,7 +223,7 @@ export default function Navbar() {
               background: "linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)",
             }}
           >
-            <span>Get Free Consultation</span>
+            <span>Talk to an Expert</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </div>

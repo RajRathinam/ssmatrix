@@ -1,4 +1,4 @@
-import { Users, ArrowRight, FileText, CheckCircle2, Sparkles, PhoneCall } from "lucide-react";
+import { Users, ArrowRight, Sparkles, MessageSquare, Clock } from "lucide-react";
 import recruiter from "@/assets/recruiter.png";
 
 export default function CTA() {
@@ -20,26 +20,26 @@ export default function CTA() {
             <div className="flex-1 p-8 sm:p-12 lg:p-14 relative z-10">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold tracking-wider uppercase mb-4 border border-amber-500/30">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                Ready to Accelerate Growth?
+                Let's Build Together
               </span>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight mb-4">
-                Looking for Exceptional Talent or Your Next Big Opportunity?
+                Ready to build your team or your platform?
               </h2>
 
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mb-8">
-                Partner with SS MATRIX for bespoke talent acquisition and IT development. We turn hiring bottlenecks into sustainable competitive advantage.
+                Tell us what you need and we'll respond within one business day. Whether you need skilled talent or modern software and cloud engineering, our consultants are ready to help.
               </p>
 
               {/* Stats & Trust Row */}
               <div className="flex flex-wrap items-center gap-6 mb-8 pt-6 border-t border-slate-800">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold text-xs">
-                    ✓
+                    <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-white">300+ Enterprises</div>
-                    <div className="text-[11px] text-slate-400">Trust our hiring rigor</div>
+                    <div className="text-sm font-bold text-white">1 Business Day</div>
+                    <div className="text-[11px] text-slate-400">Guaranteed response SLA</div>
                   </div>
                 </div>
 
@@ -50,8 +50,8 @@ export default function CTA() {
                     <Users className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-white">5,000+ Placements</div>
-                    <div className="text-[11px] text-slate-400">Pan-India talent reach</div>
+                    <div className="text-sm font-bold text-white">500+ Placed</div>
+                    <div className="text-[11px] text-slate-400">Across 15+ industries</div>
                   </div>
                 </div>
               </div>
@@ -60,18 +60,18 @@ export default function CTA() {
               <div className="flex flex-col sm:flex-row gap-3.5">
                 <a
                   href="#contact"
-                  className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-display font-bold text-xs sm:text-sm text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-lg shadow-amber-500/20 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-display font-bold text-sm text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-lg shadow-amber-500/20 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  <span>Hire Top Talent</span>
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Get in Touch</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
 
                 <a
-                  href="mailto:hr@ssmatrix.in"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-slate-700 hover:border-slate-500 bg-slate-900/60 text-white font-semibold text-xs sm:text-sm hover:bg-slate-800 transition-all duration-200"
+                  href="#services"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-slate-700 hover:border-slate-500 bg-slate-900/60 text-white font-semibold text-sm hover:bg-slate-800 transition-all duration-200"
                 >
-                  <FileText className="w-4 h-4 text-amber-400" />
-                  <span>Submit Candidate Resume</span>
+                  <span>Explore Services</span>
                 </a>
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function CTA() {
               <div className="relative">
                 <img
                   src={recruiter}
-                  alt="SS MATRIX Senior Recruiter"
+                  alt="AIT3CH360 Senior Recruiter"
                   className="w-full max-w-[320px] h-auto object-contain drop-shadow-2xl relative z-10"
                 />
 
@@ -91,7 +91,7 @@ export default function CTA() {
                     <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
                     <span className="text-xs font-bold text-white">Active Mandates</span>
                     <span className="text-xs text-slate-500">•</span>
-                    <span className="text-xs font-semibold text-amber-400">120+ Open Roles</span>
+                    <span className="text-xs font-semibold text-amber-400">Fast Turnaround</span>
                   </div>
                 </div>
               </div>

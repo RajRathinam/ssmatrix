@@ -8,7 +8,7 @@ const testimonials = [
     role: "Head of Talent Acquisition",
     company: "TechCorp India",
     rating: 5,
-    text: "SS MATRIX has consistently delivered exceptional engineering talent for our core product teams. Their pre-screening rigor saved our engineering managers countless interview hours.",
+    text: "AIT3CH360 has consistently delivered exceptional engineering talent for our core product teams. Their pre-screening rigor saved our engineering managers countless interview hours.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
     hireType: "Senior Full-Stack & Cloud Leads",
   },
@@ -17,7 +17,7 @@ const testimonials = [
     role: "HR Director",
     company: "FinEdge Solutions",
     rating: 5,
-    text: "From mid-level lateral hiring to confidential leadership search, SS MATRIX operates as an indispensable extension of our HR department. Exceptional speed and integrity.",
+    text: "From mid-level lateral hiring to confidential leadership search, AIT3CH360 operates as an indispensable extension of our HR department. Exceptional speed and integrity.",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
     hireType: "Executive C-Suite & VP Engineering",
   },
@@ -26,7 +26,7 @@ const testimonials = [
     role: "Founder & CEO",
     company: "NovaSoft Technologies",
     rating: 5,
-    text: "Their technology consulting and web development team delivered a blazing-fast corporate platform ahead of schedule. An outstanding end-to-end partner in Chennai.",
+    text: "Their technology consulting and web development team delivered a blazing-fast corporate platform ahead of schedule. An outstanding people and technology partner.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
     hireType: "Web App Dev & DevOps Deployment",
   },
@@ -35,7 +35,7 @@ const testimonials = [
     role: "VP Human Resources",
     company: "BrightPath Group",
     rating: 5,
-    text: "Professional, responsive, and genuinely invested in candidate cultural alignment. SS MATRIX raised our offer-to-join ratio from 65% to an incredible 92%.",
+    text: "Professional, responsive, and genuinely invested in candidate cultural alignment. AIT3CH360 raised our offer-to-join ratio from 65% to an incredible 92%.",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
     hireType: "High-Volume Workforce Staffing",
   },
@@ -44,7 +44,7 @@ const testimonials = [
     role: "Chief Technology Officer",
     company: "DataVelocity Labs",
     rating: 5,
-    text: "The technical specialists placed by SS MATRIX hit the ground running with virtually zero ramp-up time. Exactly the skill profile, mindset, and experience we needed.",
+    text: "The technical specialists placed by AIT3CH360 hit the ground running with virtually zero ramp-up time. Exactly the skill profile, mindset, and experience we needed.",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80",
     hireType: "Data Engineers & AI Architects",
   },
@@ -71,7 +71,7 @@ const testimonials = [
     role: "CHRO",
     company: "MediTech Innovations",
     rating: 5,
-    text: "We have evaluated dozens of staffing firms. SS MATRIX distinguishes themselves through continuous post-offer engagement and impeccable candidate care.",
+    text: "We have evaluated dozens of staffing firms. AIT3CH360 distinguishes themselves through continuous post-offer engagement and impeccable candidate care.",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
     hireType: "Healthcare Tech & Project Managers",
   },
@@ -180,7 +180,7 @@ export default function Testimonials() {
             </span>
           </h2>
           <p className="mt-4 text-slate-600 text-base md:text-lg leading-relaxed">
-            See why leading enterprises in Chennai, Bengaluru, Mumbai and across India depend on SS MATRIX for mission-critical hiring and technology outcomes.
+            See why leading enterprises across India and globally depend on AIT3CH360 for mission-critical hiring and technology outcomes.
           </p>
         </div>
 

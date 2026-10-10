@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <defs>
+    <linearGradient id="svgOrbitGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="50%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="svgOrbitGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="svgCoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+  </defs>
+
+  <!-- Emblem squircle -->
+  <rect x="6" y="8" width="44" height="44" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Dynamic 360 Orbital Rings -->
+  <path d="M14 30C14 21.7 20.7 15 29 15C34.8 15 39.8 18.3 42.2 23.3" stroke="url(#svgOrbitGrad1)" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M44 30C44 38.3 37.3 45 29 45C23.2 45 18.2 41.7 15.8 36.7" stroke="url(#svgOrbitGrad2)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Core AI Node -->
+  <circle cx="29" cy="30" r="5" fill="url(#svgCoreGrad)"/>
+  <circle cx="29" cy="30" r="2" fill="#ffffff"/>
+
+  <!-- Orbit Satellites -->
+  <circle cx="42.2" cy="23.3" r="2" fill="#ea580c"/>
+  <circle cx="15.8" cy="36.7" r="2" fill="#6366f1"/>
+
+  <!-- Brand Typography -->
+  <text x="62" y="36" font-family="'Outfit', system-ui, -apple-system, sans-serif" font-size="24" font-weight="900" letter-spacing="-0.5">
+    <tspan fill="url(#aiGrad)">AI</tspan><tspan fill="#0f172a">T3CH</tspan><tspan fill="url(#svgOrbitGrad1)">360</tspan>
+  </text>
+  <text x="63" y="47" font-family="'Outfit', system-ui, -apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#64748b" letter-spacing="1.8">CONSULTANCY &amp; IT SERVICES</text>
+</svg>

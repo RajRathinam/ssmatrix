@@ -1,10 +1,8 @@
 import {
-  Clock,
   ShieldCheck,
-  TrendingUp,
-  Globe2,
-  FileCheck2,
-  Code2,
+  Cpu,
+  Layers,
+  Clock,
   Sparkles,
   ArrowRight,
   CheckCircle2,
@@ -13,34 +11,28 @@ import whyChooseImage from "../../assets/whychooseus.png";
 
 const reasons = [
   {
-    icon: Clock,
-    title: "48-Hour Candidate Shortlist",
-    description: "Rapid delivery of interview-ready profiles through our active database of 100K+ pre-screened professionals.",
-  },
-  {
     icon: ShieldCheck,
-    title: "Top 3% Rigorous Vetting",
-    description: "Multi-layered technical assessments, behavioral interviews, and background verification before candidate presentation.",
+    title: "Pre-Vetted Talent",
+    description: "Technical screening, background checks and culture-fit interviews before any profile reaches you.",
+    badge: "Quality First",
   },
   {
-    icon: TrendingUp,
-    title: "98% Placement Retention",
-    description: "We focus on long-term cultural alignment, resulting in industry-leading retention rates and low attrition.",
+    icon: Cpu,
+    title: "Technology Depth",
+    description: "Because we build technology too, we understand roles and skills better than a typical staffing firm.",
+    badge: "Engineering Rigor",
   },
   {
-    icon: Globe2,
-    title: "Pan-India Sourcing Network",
-    description: "Extensive talent reach spanning Chennai, Bengaluru, Hyderabad, Pune, Mumbai, Delhi-NCR, and tier-2 tech hubs.",
+    icon: Layers,
+    title: "Flexible Engagement",
+    description: "Choose permanent, contract, dedicated team or project-based models as your needs change.",
+    badge: "Agile Delivery",
   },
   {
-    icon: FileCheck2,
-    title: "Full Statutory HR Compliance",
-    description: "End-to-end management of labour compliance, payroll processes, ESIC, PF, and contractual documentation.",
-  },
-  {
-    icon: Code2,
-    title: "Dual Talent & Technology Prowess",
-    description: "Unique ability to provide both engineering talent and turnkey custom web & software development services.",
+    icon: Clock,
+    title: "48-Hour Turnaround",
+    description: "Average first-profile delivery within 48 hours for fast-track scaling with zero compromise on vetting.",
+    badge: "Speed to Hire",
   },
 ];
 
@@ -58,18 +50,18 @@ export default function WhyChoose() {
           <div className="flex-1" data-aos="fade-right">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold tracking-wider uppercase mb-3 border border-amber-200">
               <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-              The SS MATRIX Advantage
+              Why AIT3CH360
             </span>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">
-              Why Leading Enterprises{" "}
-              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-amber-600 bg-clip-text text-transparent">
-                Choose SS MATRIX
+              Built for Businesses{" "}
+              <span className="bg-gradient-to-r from-amber-500 via-orange-500 to-indigo-600 bg-clip-text text-transparent">
+                That Move Fast
               </span>
             </h2>
 
             <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
-              We operate not merely as external recruiters, but as strategic workforce partners invested in your organizational milestones. Here is why over 300 companies rely on us:
+              We operate as a true 360° people-and-technology partner. When hiring and engineering work in unison, your business moves faster with fewer bottlenecks.
             </p>
 
             {/* Feature Cards Grid */}
@@ -77,13 +69,19 @@ export default function WhyChoose() {
               {reasons.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-amber-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between group"
+                  className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:border-amber-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 border border-amber-200/80 flex items-center justify-center mb-3 group-hover:bg-amber-500 group-hover:text-white transition-colors duration-200">
-                      <item.icon className="w-5 h-5" />
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 border border-amber-200/80 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors duration-200">
+                        <item.icon className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-white px-2 py-0.5 rounded-full border border-slate-200">
+                        {item.badge}
+                      </span>
                     </div>
-                    <h3 className="text-sm font-bold font-display text-slate-900 mb-1.5 group-hover:text-amber-600 transition-colors">
+
+                    <h3 className="text-base font-bold font-display text-slate-900 mb-1.5 group-hover:text-amber-600 transition-colors">
                       {item.title}
                     </h3>
                     <p className="text-xs text-slate-600 leading-relaxed">
@@ -98,14 +96,14 @@ export default function WhyChoose() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 text-white font-semibold text-xs hover:bg-amber-600 transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-slate-900 text-white font-semibold text-xs sm:text-sm hover:bg-amber-600 transition-colors shadow-sm"
               >
-                <span>Schedule a Talent Consultation</span>
+                <span>Talk to an Expert</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
               <div className="flex items-center gap-1.5 text-xs text-slate-500">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>Zero upfront discovery fees</span>
+                <span>Response within one business day</span>
               </div>
             </div>
           </div>
@@ -121,7 +119,7 @@ export default function WhyChoose() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-white">
                 <img
                   src={whyChooseImage}
-                  alt="Why Choose SS MATRIX - Trusted HR and IT Partner"
+                  alt="Why Choose AIT3CH360 - Trusted HR and IT Partner"
                   className="w-full h-auto object-cover"
                 />
 
@@ -130,14 +128,14 @@ export default function WhyChoose() {
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-xs font-bold text-slate-900">
-                        12+ Years Dedicated Service
+                        One Trusted Partner
                       </div>
                       <div className="text-[11px] text-slate-500">
-                        Chennai Headquarters • Pan-India Execution
+                        Manpower & Technology Synergy
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">
-                      VERIFIED
+                    <span className="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                      360° Solutions
                     </span>
                   </div>
                 </div>

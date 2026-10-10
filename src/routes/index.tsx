@@ -22,10 +22,10 @@ import { ScrollProgress, BackToTop } from "@/components/site/Utilities";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SS MATRIX — Recruitment, HR Consulting & IT Services in Chennai" },
-      { name: "description", content: "SS MATRIX Consultancy & Development Services: trusted recruitment, staffing, HR consulting and IT solutions in Chennai. 5000+ placements, 250+ clients, pan-India reach." },
-      { property: "og:title", content: "SS MATRIX — Recruitment, HR & IT Solutions" },
-      { property: "og:description", content: "Connecting talent, technology and business growth. Premium recruitment, staffing and IT consultancy from Chennai." },
+      { title: "AIT3CH360 — Manpower & Technology Consultancy" },
+      { name: "description", content: "AIT3CH360: The right people. The right technology. One trusted partner. End-to-end workforce solutions and practical technology consulting based in Tamil Nadu, India." },
+      { property: "og:title", content: "AIT3CH360 — Manpower & Technology Consultancy" },
+      { property: "og:description", content: "Connecting organisations with the right talent and the right technology. Permanent & contract staffing, software development, cloud, data & AI." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
     ],

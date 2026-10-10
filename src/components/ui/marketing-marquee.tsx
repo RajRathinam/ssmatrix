@@ -10,15 +10,15 @@ import {
   Zap,
 } from "lucide-react";
 
-const matrixCapabilities = [
-  { name: "Executive Search & Leadership", icon: Award, color: "text-amber-500 bg-amber-50" },
-  { name: "Permanent & Lateral Staffing", icon: Users, color: "text-indigo-500 bg-indigo-50" },
-  { name: "Full-Stack IT & Cloud Engineers", icon: Code2, color: "text-blue-500 bg-blue-50" },
-  { name: "Campus Drives & Student Placements", icon: GraduationCap, color: "text-purple-500 bg-purple-50" },
-  { name: "HR Compliance & Payroll Advisory", icon: ShieldCheck, color: "text-emerald-500 bg-emerald-50" },
-  { name: "Contract-to-Hire (C2H) Scalability", icon: Briefcase, color: "text-rose-500 bg-rose-50" },
-  { name: "Custom Web & Software Development", icon: Globe, color: "text-cyan-500 bg-cyan-50" },
-  { name: "Rapid 48-Hour Talent Delivery", icon: Zap, color: "text-amber-600 bg-amber-100/60" },
+const capabilities = [
+  { name: "Permanent Recruitment", icon: Award, color: "text-amber-500 bg-amber-50" },
+  { name: "Contract & Temp Staffing", icon: Users, color: "text-indigo-500 bg-indigo-50" },
+  { name: "Software & Web Development", icon: Code2, color: "text-blue-500 bg-blue-50" },
+  { name: "Cloud & DevOps Engineering", icon: Globe, color: "text-purple-500 bg-purple-50" },
+  { name: "Payroll & Statutory Compliance", icon: ShieldCheck, color: "text-emerald-500 bg-emerald-50" },
+  { name: "Data, AI & Automation", icon: Zap, color: "text-rose-500 bg-rose-50" },
+  { name: "IT & Non-IT Recruitment", icon: Briefcase, color: "text-cyan-500 bg-cyan-50" },
+  { name: "48-Hour Average Turnaround", icon: Zap, color: "text-amber-600 bg-amber-100/60" },
 ];
 
 export function MarketingMarquee() {
@@ -32,7 +32,7 @@ export function MarketingMarquee() {
         {/* Marquee Track */}
         <div className="flex animate-marquee hover:pause whitespace-nowrap">
           {/* First set */}
-          {matrixCapabilities.map((item, idx) => (
+          {capabilities.map((item, idx) => (
             <div
               key={`first-${idx}`}
               className="inline-flex items-center gap-3 px-5 py-2.5 mx-2 rounded-full bg-slate-800/80 border border-slate-700/80 shadow-sm hover:border-amber-400/50 hover:bg-slate-800 transition-all duration-300 group cursor-default"
@@ -47,7 +47,7 @@ export function MarketingMarquee() {
           ))}
 
           {/* Duplicate set for seamless infinite loop */}
-          {matrixCapabilities.map((item, idx) => (
+          {capabilities.map((item, idx) => (
             <div
               key={`second-${idx}`}
               className="inline-flex items-center gap-3 px-5 py-2.5 mx-2 rounded-full bg-slate-800/80 border border-slate-700/80 shadow-sm hover:border-amber-400/50 hover:bg-slate-800 transition-all duration-300 group cursor-default"

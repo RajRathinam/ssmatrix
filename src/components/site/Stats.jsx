@@ -1,37 +1,37 @@
-import { Users, Clock, Award, ShieldCheck, TrendingUp, Sparkles } from "lucide-react";
+import { Users, Clock, Award, ShieldCheck, TrendingUp, Sparkles, Building2, Briefcase } from "lucide-react";
 import Counter from "./Counter";
 
 const stats = [
   {
-    value: 99,
-    suffix: "%",
-    label: "Placement Accuracy",
-    description: "Deep technical screening ensures precise candidate-to-role matching.",
-    icon: ShieldCheck,
+    value: 500,
+    suffix: "+",
+    label: "Professionals Placed",
+    description: "High-performing talent placed across software engineering, operations and leadership.",
+    icon: Users,
     highlight: false,
   },
   {
-    value: 48,
-    suffix: "h",
-    label: "Average Turnaround",
-    description: "Fast delivery of interview-ready profiles to accelerate urgent hiring.",
-    icon: Clock,
+    value: 50,
+    suffix: "+",
+    label: "Client Engagements",
+    description: "Startups, SMEs and enterprise organisations relying on our people & technology solutions.",
+    icon: Briefcase,
     highlight: false,
   },
   {
-    value: 98,
-    suffix: "%",
-    label: "Retention Rate",
-    description: "Candidates placed remain with organizations beyond the initial probation period.",
-    icon: Award,
+    value: 15,
+    suffix: "+",
+    label: "Industries Served",
+    description: "Deep sector experience across IT, software, manufacturing, banking, and healthcare.",
+    icon: Building2,
     highlight: true,
   },
   {
-    value: 300,
-    suffix: "+",
-    label: "Corporate Partners",
-    description: "Trusted staffing and technology partner to top Indian enterprises.",
-    icon: Users,
+    value: 48,
+    suffix: " hrs",
+    label: "Average First-Profile Turnaround",
+    description: "Speed without compromise: vetted, interview-ready profiles delivered rapidly.",
+    icon: Clock,
     highlight: false,
   },
 ];
@@ -49,76 +49,71 @@ export default function Stats() {
           <div>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold tracking-wider uppercase mb-3 border border-amber-500/30">
               <TrendingUp className="w-3.5 h-3.5 text-amber-400" />
-              Measurable Performance
+              Measurable Outcomes
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white leading-tight">
               Driving Results with{" "}
               <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-200 bg-clip-text text-transparent">
-                Data-Driven Precision
+                People & Technology
               </span>
             </h2>
           </div>
-          <p className="text-slate-400 text-sm sm:text-base max-w-md leading-relaxed">
-            Eliminating hiring delays, reducing mismatch risks, and equipping enterprises with high-caliber talent that delivers immediate impact.
+          <p className="text-slate-400 text-sm md:text-base max-w-md leading-relaxed">
+            Our dual practice ensures you get the right workforce capabilities and modern engineering under one trusted partner.
           </p>
         </div>
 
-        {/* Stats Cards Grid */}
+        {/* 4 Big Metrics Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, idx) => {
-            const Icon = stat.icon;
-            const isHighlight = stat.highlight;
-
-            return (
-              <div
-                key={idx}
-                className={`rounded-3xl p-7 transition-all duration-300 flex flex-col justify-between group relative border ${
-                  isHighlight
-                    ? "bg-gradient-to-b from-amber-500/20 to-slate-800/80 border-amber-500/50 shadow-lg shadow-amber-500/10 hover:-translate-y-1.5"
-                    : "bg-slate-800/60 border-slate-700/80 hover:border-slate-600 hover:bg-slate-800 hover:-translate-y-1.5 shadow-sm"
-                }`}
-                data-aos="fade-up"
-                data-aos-delay={idx * 100}
-              >
-                <div>
-                  {/* Icon */}
+          {stats.map((item, idx) => (
+            <div
+              key={idx}
+              className={`p-7 rounded-3xl border transition-all duration-300 group flex flex-col justify-between ${
+                item.highlight
+                  ? "bg-gradient-to-b from-slate-800 to-slate-850 border-amber-500/40 shadow-xl shadow-amber-500/5 ring-1 ring-amber-500/20"
+                  : "bg-slate-850/60 border-slate-800 hover:border-slate-700 hover:bg-slate-800/60"
+              }`}
+              data-aos="fade-up"
+              data-aos-delay={idx * 100}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-5">
                   <div
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 shadow-xs ${
-                      isHighlight
-                        ? "bg-amber-500 text-slate-950 font-bold"
-                        : "bg-slate-700/80 text-amber-400"
+                    className={`w-12 h-12 rounded-2xl flex items-center justify-center ${
+                      item.highlight
+                        ? "bg-amber-400 text-slate-950 shadow-md"
+                        : "bg-slate-800 text-amber-400 group-hover:bg-slate-700"
                     }`}
                   >
-                    <Icon className="w-6 h-6" />
+                    <item.icon className="w-6 h-6" />
                   </div>
-
-                  {/* Value & Suffix */}
-                  <div className="text-4xl sm:text-5xl font-black font-display tracking-tight text-white mb-2 flex items-baseline">
-                    <Counter end={stat.value} suffix={stat.suffix} duration={2200} />
-                  </div>
-
-                  {/* Label */}
-                  <div
-                    className={`text-base font-bold font-display mb-3 ${
-                      isHighlight ? "text-amber-300" : "text-slate-200"
-                    }`}
-                  >
-                    {stat.label}
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                    {stat.description}
-                  </p>
+                  {item.highlight && (
+                    <span className="text-[10px] font-bold text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded-full border border-amber-500/30 uppercase tracking-widest">
+                      Multi-Sector
+                    </span>
+                  )}
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-700/60 flex items-center justify-between text-[11px] text-slate-400">
-                  <span>Verified Metric</span>
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <div className="font-display font-black text-4xl sm:text-5xl text-white tracking-tight flex items-baseline">
+                  <Counter end={item.value} target={item.value} />
+                  <span className="text-amber-400 ml-1">{item.suffix}</span>
                 </div>
+
+                <div className="mt-2 text-base font-bold font-display text-slate-100">
+                  {item.label}
+                </div>
+
+                <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  {item.description}
+                </p>
               </div>
-            );
-          })}
+
+              <div className="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-500 flex items-center gap-1 font-medium">
+                <Sparkles className="w-3 h-3 text-amber-400" />
+                <span>AIT3CH360 Standard</span>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>
