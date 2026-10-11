@@ -77,7 +77,7 @@ export default function Contact() {
             </span>
           </h2>
           <p className="mt-4 text-slate-600 text-base leading-relaxed">
-            Tell us what you need and we'll respond within one business day.
+            Tell us what you need and our consultants will get back to you promptly.
           </p>
         </div>
 
@@ -101,7 +101,7 @@ export default function Contact() {
                     Location
                   </h4>
                   <p className="text-sm font-bold text-slate-900 leading-snug">
-                    Madurai, Tamil Nadu, India
+                    Coimbatore, Tamil Nadu, India
                   </p>
                   <p className="text-xs text-slate-600 mt-0.5">
                     Serving startups, SMEs and enterprises globally
@@ -140,13 +140,13 @@ export default function Contact() {
                     Official Email
                   </h4>
                   <a
-                    href="mailto:info@ait3ch360.com"
+                    href="mailto:enquiry@ait3ch360.com"
                     className="text-sm font-bold text-slate-900 hover:text-amber-600 transition-colors block"
                   >
-                    info@ait3ch360.com
+                    enquiry@ait3ch360.com
                   </a>
                   <span className="text-[11px] text-slate-500">
-                    Guaranteed response within 1 business day
+                    Dedicated support & guidance
                   </span>
                 </div>
               </div>
@@ -154,11 +154,11 @@ export default function Contact() {
               {/* Instant WhatsApp Action */}
               <div className="pt-4 border-t border-slate-200/80">
                 <a
-                  href="mailto:info@ait3ch360.com"
+                  href="mailto:enquiry@ait3ch360.com"
                   className="w-full flex items-center justify-center gap-2.5 py-3 px-5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors shadow-sm"
                 >
                   <Mail className="w-4 h-4 text-amber-400" />
-                  <span>Send Direct Email to info@ait3ch360.com</span>
+                  <span>Send Direct Email to enquiry@ait3ch360.com</span>
                 </a>
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-sm font-bold text-slate-900">
-                    Fast 1 Business Day Response
+                    Prompt Dedicated Support
                   </div>
                   <div className="text-xs text-slate-600">
                     Our team reviews your requirement and prepares a dedicated roadmap.
@@ -188,14 +188,22 @@ export default function Contact() {
           >
             {/* Form Top Header */}
             <div className="p-7 sm:p-8 bg-gradient-to-r from-slate-950 to-indigo-950 text-white border-b border-slate-800">
-              <span className="text-amber-400 text-xs font-bold tracking-widest uppercase mb-1 block">
-                Quick Response Mandate
-              </span>
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+                <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">
+                  Quick Response Mandate
+                </span>
+                <a
+                  href="mailto:hr@ait3ch360.com"
+                  className="text-slate-300 hover:text-amber-300 text-xs font-medium transition-colors"
+                >
+                  Direct Desk: hr@ait3ch360.com
+                </a>
+              </div>
               <h3 className="text-2xl font-bold font-display text-white">
                 Request a Talent or Project Proposal
               </h3>
               <p className="text-slate-300 text-xs sm:text-sm mt-1">
-                Tell us what you need and we'll respond within one business day.
+                Tell us what you need and our talent team will get back to you promptly.
               </p>
             </div>
 
@@ -205,7 +213,7 @@ export default function Contact() {
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                   <div>
                     <span className="font-bold block">Inquiry Submitted Successfully!</span>
-                    <span>An AIT3CH360 consultant will contact you shortly.</span>
+                    <span>An AIT3CH360 consultant will contact you shortly. Form routed to hr@ait3ch360.com.</span>
                   </div>
                 </div>
               )}
@@ -328,7 +336,7 @@ export default function Contact() {
                 {isSubmitting ? (
                   <>
                     <div className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
-                    <span>Submitting Inquiry...</span>
+                    <span>Submitting to HR Desk...</span>
                   </>
                 ) : (
                   <>
@@ -338,10 +346,17 @@ export default function Contact() {
                 )}
               </button>
 
-              <div className="flex items-center justify-center gap-4 text-[11px] text-slate-400 pt-2">
+              <div className="text-center pt-1 text-xs text-slate-500 flex items-center justify-center gap-1.5">
+                <span>Quick Response Mandate:</span>
+                <a href="mailto:hr@ait3ch360.com" className="font-semibold text-amber-600 hover:underline">
+                  hr@ait3ch360.com
+                </a>
+              </div>
+
+              <div className="flex items-center justify-center gap-4 text-[11px] text-slate-400 pt-1">
                 <span>🔒 100% Confidential</span>
                 <span>•</span>
-                <span>⚡ 1 Business Day Response</span>
+                <span>⚡ Prompt Consultation</span>
                 <span>•</span>
                 <span>No Spam Guarantee</span>
               </div>

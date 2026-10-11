@@ -122,7 +122,7 @@ export default function Footer() {
             <div className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>Madurai, Tamil Nadu, India</span>
+                <span>Coimbatore, Tamil Nadu, India</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-amber-400 shrink-0" />
@@ -132,8 +132,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <a href="mailto:info@ait3ch360.com" className="hover:text-amber-400 transition-colors">
-                  info@ait3ch360.com
+                <a href="mailto:enquiry@ait3ch360.com" className="hover:text-amber-400 transition-colors">
+                  enquiry@ait3ch360.com
                 </a>
               </div>
             </div>
@@ -160,9 +160,15 @@ export default function Footer() {
                     Join
                   </button>
                 </div>
+                <div className="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
+                  <span>Direct desk:</span>
+                  <a href="mailto:subscribe@ait3ch360.com" className="text-amber-400 hover:underline font-medium">
+                    subscribe@ait3ch360.com
+                  </a>
+                </div>
                 {subscribed && (
                   <p className="text-[11px] text-emerald-400 flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5" /> Thank you for subscribing!
+                    <CheckCircle2 className="w-3.5 h-3.5" /> Subscribed successfully via subscribe@ait3ch360.com!
                   </p>
                 )}
               </form>
@@ -174,6 +180,12 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} AIT3CH360. Manpower & Technology Consultancy. All Rights Reserved.</p>
+          <div className="flex items-center gap-1.5 text-slate-400">
+            <span>Developed by</span>
+            <span className="text-amber-400 font-semibold tracking-wide hover:text-amber-300 transition-colors">
+              Infygrid Solutions
+            </span>
+          </div>
           <div className="flex items-center gap-6">
             <a href="#home" className="hover:text-slate-400 transition-colors">Privacy Policy</a>
             <a href="#home" className="hover:text-slate-400 transition-colors">Terms of Service</a>

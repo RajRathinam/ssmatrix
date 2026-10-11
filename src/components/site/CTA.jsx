@@ -28,7 +28,7 @@ export default function CTA() {
               </h2>
 
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mb-8">
-                Tell us what you need and we'll respond within one business day. Whether you need skilled talent or modern software and cloud engineering, our consultants are ready to help.
+                Tell us what you need. Whether you need skilled talent or modern software and cloud engineering, our consultants are ready to help.
               </p>
 
               {/* Stats & Trust Row */}
@@ -38,8 +38,8 @@ export default function CTA() {
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-white">1 Business Day</div>
-                    <div className="text-[11px] text-slate-400">Guaranteed response SLA</div>
+                    <div className="text-sm font-bold text-white">Prompt Support</div>
+                    <div className="text-[11px] text-slate-400">Dedicated consultant guidance</div>
                   </div>
                 </div>
 

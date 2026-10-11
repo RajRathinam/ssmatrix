@@ -30,8 +30,8 @@ const reasons = [
   },
   {
     icon: Clock,
-    title: "48-Hour Turnaround",
-    description: "Average first-profile delivery within 48 hours for fast-track scaling with zero compromise on vetting.",
+    title: "Agile Profile Turnaround",
+    description: "Rapid first-profile delivery for fast-track scaling with zero compromise on vetted quality.",
     badge: "Speed to Hire",
   },
 ];
@@ -101,10 +101,6 @@ export default function WhyChoose() {
                 <span>Talk to an Expert</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <div className="flex items-center gap-1.5 text-xs text-slate-500">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>Response within one business day</span>
-              </div>
             </div>
           </div>
 
@@ -116,25 +112,25 @@ export default function WhyChoose() {
               <div className="absolute -inset-4 bg-gradient-to-tr from-amber-400/20 via-purple-500/20 to-transparent rounded-3xl blur-2xl -z-10" />
 
               {/* Image Container with rounded styling */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-white">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-white pb-24 sm:pb-28">
                 <img
                   src={whyChooseImage}
                   alt="Why Choose AIT3CH360 - Trusted HR and IT Partner"
                   className="w-full h-auto object-cover"
                 />
 
-                {/* Overlay Badge */}
-                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-lg">
-                  <div className="flex items-center justify-between">
+                {/* Overlay Badge moved down below the 3 infographic items */}
+                <div className="absolute bottom-3.5 sm:bottom-5 left-3.5 sm:left-6 right-3.5 sm:right-6 p-3 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-lg">
+                  <div className="flex items-center justify-between gap-2">
                     <div>
-                      <div className="text-xs font-bold text-slate-900">
+                      <div className="text-xs sm:text-sm font-bold text-slate-900">
                         One Trusted Partner
                       </div>
-                      <div className="text-[11px] text-slate-500">
+                      <div className="text-[10px] sm:text-[11px] text-slate-500">
                         Manpower & Technology Synergy
                       </div>
                     </div>
-                    <span className="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                    <span className="text-[11px] sm:text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 shrink-0">
                       360° Solutions
                     </span>
                   </div>

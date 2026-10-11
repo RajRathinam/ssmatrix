@@ -79,13 +79,22 @@ export default function BrandLogo({ className = "h-9", isDark = false, showTagli
           </span>
         </div>
         {showTagline && (
-          <span
-            className={`text-[8px] font-bold tracking-[0.14em] uppercase mt-0.5 ${
-              isDark ? "text-slate-400" : "text-slate-500"
-            }`}
-          >
-            Manpower & Technology
-          </span>
+          <div className="flex flex-col items-start leading-tight mt-0.5">
+            <span
+              className={`text-[7.5px] sm:text-[8px] font-bold tracking-[0.14em] uppercase text-left ${
+                isDark ? "text-slate-400" : "text-slate-500"
+              }`}
+            >
+              Manpower & Technology
+            </span>
+            <span
+              className={`text-[7px] sm:text-[7.5px] font-bold tracking-[0.18em] uppercase text-left ${
+                isDark ? "text-amber-400" : "text-amber-600"
+              }`}
+            >
+              Consultancy
+            </span>
+          </div>
         )}
       </div>
     </div>

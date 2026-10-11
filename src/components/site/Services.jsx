@@ -54,7 +54,7 @@ const allServices = [
     badge: "Agile Scale",
     color: "indigo",
     features: [
-      "Fast ramp-up within 48 hours",
+      "Agile ramp-up & profile turnaround",
       "Flexible project tenure",
       "Convert-to-hire options",
     ],
@@ -363,9 +363,9 @@ export default function Services() {
           </div>
         </div>
 
-        {/* ── Category Filter Pills & Carousel Controls Bar ── */}
+        {/* ── Category Filter Pills ── */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8"
+          className="flex justify-center mb-8"
           data-aos="fade-up"
         >
           {/* Filter Pills */}
@@ -399,31 +399,6 @@ export default function Services() {
                 </button>
               );
             })}
-          </div>
-
-          {/* Prev / Next Header Buttons */}
-          <div className="flex items-center gap-3">
-            <span className="text-xs text-slate-500 font-medium hidden md:inline-block">
-              {filteredServices.length} offerings
-            </span>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={scrollPrev}
-                disabled={!canScrollPrev}
-                aria-label="Previous slide"
-                className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:border-amber-500 hover:bg-amber-50 text-slate-700 hover:text-amber-600 flex items-center justify-center transition-all duration-200 disabled:opacity-30 disabled:pointer-events-none cursor-pointer shadow-xs active:scale-95"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={scrollNext}
-                disabled={!canScrollNext}
-                aria-label="Next slide"
-                className="w-10 h-10 rounded-full border border-slate-300 bg-white hover:border-amber-500 hover:bg-amber-50 text-slate-700 hover:text-amber-600 flex items-center justify-center transition-all duration-200 disabled:opacity-30 disabled:pointer-events-none cursor-pointer shadow-xs active:scale-95"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
           </div>
         </div>
 
@@ -518,31 +493,20 @@ export default function Services() {
             </div>
           </div>
 
-          {/* Dots Pagination & Slide Counter */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 pt-2">
-            <div className="text-xs text-slate-500 font-medium order-2 sm:order-1 flex items-center gap-2">
-              <span className="inline-block w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-              <span>Swipe or click arrows to explore all {filteredServices.length} offerings</span>
-            </div>
-
-            <div className="flex items-center gap-2 order-1 sm:order-2 flex-wrap justify-center">
-              {scrollSnaps.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollTo(index)}
-                  aria-label={`Go to slide ${index + 1}`}
-                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    index === selectedIndex
-                      ? "w-8 bg-amber-500 shadow-xs"
-                      : "w-2.5 bg-slate-300 hover:bg-slate-400"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <div className="text-xs font-semibold text-slate-600 order-3 hidden sm:block bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
-              {selectedIndex + 1} / {scrollSnaps.length || 1}
-            </div>
+          {/* Dots Pagination */}
+          <div className="flex items-center justify-center gap-2 mt-8 pt-2">
+            {scrollSnaps.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                aria-label={`Go to slide ${index + 1}`}
+                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  index === selectedIndex
+                    ? "w-8 bg-amber-500 shadow-xs"
+                    : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                }`}
+              />
+            ))}
           </div>
         </div>
 

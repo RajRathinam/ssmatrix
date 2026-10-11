@@ -27,10 +27,10 @@ const stats = [
     highlight: true,
   },
   {
-    value: 48,
-    suffix: " hrs",
-    label: "Average First-Profile Turnaround",
-    description: "Speed without compromise: vetted, interview-ready profiles delivered rapidly.",
+    value: 98,
+    suffix: "%",
+    label: "Agile Profile Turnaround",
+    description: "Speed without compromise: vetted, interview-ready profiles delivered with agile velocity.",
     icon: Clock,
     highlight: false,
   },
@@ -106,11 +106,6 @@ export default function Stats() {
                 <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
                   {item.description}
                 </p>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-500 flex items-center gap-1 font-medium">
-                <Sparkles className="w-3 h-3 text-amber-400" />
-                <span>AIT3CH360 Standard</span>
               </div>
             </div>
           ))}

@@ -38,5 +38,6 @@
   <text x="62" y="36" font-family="'Outfit', system-ui, -apple-system, sans-serif" font-size="24" font-weight="900" letter-spacing="-0.5">
     <tspan fill="url(#aiGrad)">AI</tspan><tspan fill="#0f172a">T3CH</tspan><tspan fill="url(#svgOrbitGrad1)">360</tspan>
   </text>
-  <text x="63" y="47" font-family="'Outfit', system-ui, -apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#64748b" letter-spacing="1.8">CONSULTANCY &amp; IT SERVICES</text>
+  <text x="63" y="45" font-family="'Outfit', system-ui, -apple-system, sans-serif" font-size="7" font-weight="700" fill="#64748b" letter-spacing="1.2">MANPOWER &amp; TECHNOLOGY</text>
+  <text x="63" y="53" font-family="'Outfit', system-ui, -apple-system, sans-serif" font-size="6.5" font-weight="700" fill="#d97706" letter-spacing="1.6">CONSULTANCY</text>
 </svg>

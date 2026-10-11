@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Phone, ChevronRight, Sparkles, Clock, ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { Menu, X, ChevronRight, Sparkles, ArrowUpRight } from "lucide-react";
 import BrandLogo from "@/components/site/BrandLogo";
 
 const links = [
@@ -56,34 +56,80 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top micro announcement bar */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white text-[11px] sm:text-xs py-1.5 font-medium tracking-wide">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <div className="flex items-center gap-2 mx-auto sm:mx-0">
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-semibold text-[10px] border border-amber-500/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+      {/* Top micro announcement bar with Marquee */}
+      <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white text-[11px] sm:text-xs py-2 font-medium tracking-wide overflow-hidden border-b border-slate-800/80">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-3">
+          {/* Static Brand Pill on the left */}
+          <div className="shrink-0 flex items-center pr-3 border-r border-slate-800">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-semibold text-[10px] border border-amber-500/30 whitespace-nowrap shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
               AIT3CH360
             </span>
-            <span className="text-slate-300 hidden sm:inline">
-              Manpower & Technology Consultancy • Madurai, Tamil Nadu, India
-            </span>
-            <span className="text-amber-300 sm:hidden">
-              People & Technology Partner
-            </span>
           </div>
-          <div className="hidden sm:flex items-center gap-5 text-slate-300 text-[11px]">
-            <span className="flex items-center gap-1.5">
-              <MapPin className="w-3 h-3 text-amber-400" /> Madurai, Tamil Nadu
-            </span>
-            <a
-              href="mailto:info@ait3ch360.com"
-              className="text-amber-300 hover:text-white transition-colors font-semibold flex items-center gap-1"
-            >
-              <Mail className="w-3 h-3" /> info@ait3ch360.com
-            </a>
+
+          {/* Marquee Scroller */}
+          <div className="relative flex-1 overflow-hidden">
+            {/* Gradient masks for seamless edge fading */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 sm:w-10 bg-gradient-to-r from-slate-950 to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 sm:w-10 bg-gradient-to-l from-indigo-950 to-transparent z-10" />
+
+            <div className="flex animate-topbar-marquee hover:pause whitespace-nowrap items-center will-change-transform">
+              {[
+                "Cloud & DevOps Engineering",
+                "Payroll & Statutory Compliance",
+                "Data, AI & Automation",
+                "IT & Non-IT Recruitment",
+                "Agile Profile Turnaround",
+                "Cloud & DevOps Engineering",
+                "Payroll & Statutory Compliance",
+                "Data, AI & Automation",
+                "IT & Non-IT Recruitment",
+                "Agile Profile Turnaround",
+              ].map((item, idx) => (
+                <div key={`set1-${idx}`} className="inline-flex items-center gap-2 mx-4 text-slate-300 hover:text-amber-300 transition-colors cursor-default">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400/80 shrink-0" />
+                  <span className="font-semibold text-[11px] sm:text-xs">{item}</span>
+                </div>
+              ))}
+              {[
+                "Cloud & DevOps Engineering",
+                "Payroll & Statutory Compliance",
+                "Data, AI & Automation",
+                "IT & Non-IT Recruitment",
+                "Agile Profile Turnaround",
+                "Cloud & DevOps Engineering",
+                "Payroll & Statutory Compliance",
+                "Data, AI & Automation",
+                "IT & Non-IT Recruitment",
+                "Agile Profile Turnaround",
+              ].map((item, idx) => (
+                <div key={`set2-${idx}`} className="inline-flex items-center gap-2 mx-4 text-slate-300 hover:text-amber-300 transition-colors cursor-default">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400/80 shrink-0" />
+                  <span className="font-semibold text-[11px] sm:text-xs">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes topbarMarquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-topbar-marquee {
+          animation: topbarMarquee 35s linear infinite;
+          width: fit-content;
+        }
+        .animate-topbar-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
 
       {/* Main Navbar */}
       <header
@@ -126,15 +172,6 @@ export default function Navbar() {
 
           {/* Right Action Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="mailto:info@ait3ch360.com"
-              className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-200 bg-white font-display font-medium text-xs text-slate-700 hover:border-amber-400 hover:text-amber-600 hover:bg-amber-50/50 shadow-sm transition-all duration-200 whitespace-nowrap"
-            >
-              <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                <Mail className="w-3 h-3" />
-              </span>
-              <span className="font-semibold">info@ait3ch360.com</span>
-            </a>
 
             <a
               href="#contact"
@@ -207,14 +244,7 @@ export default function Navbar() {
         </div>
 
         {/* Drawer Footer Actions */}
-        <div className="p-4 border-t border-slate-100 bg-slate-50/70 space-y-3">
-          <a
-            href="mailto:info@ait3ch360.com"
-            onClick={closeSidebar}
-            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-slate-300 bg-white font-display font-semibold text-xs text-slate-800 hover:border-amber-400 transition-colors shadow-sm"
-          >
-            <Mail className="w-3.5 h-3.5 text-amber-600" /> info@ait3ch360.com
-          </a>
+        <div className="p-4 border-t border-slate-100 bg-slate-50/70">
           <a
             href="#contact"
             onClick={closeSidebar}

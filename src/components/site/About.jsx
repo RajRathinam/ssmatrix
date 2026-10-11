@@ -65,7 +65,7 @@ const achievements = [
   { label: "Professionals Placed", value: 500, suffix: "+" },
   { label: "Client Engagements", value: 50, suffix: "+" },
   { label: "Industries Served", value: 15, suffix: "+" },
-  { label: "Hours Avg. Turnaround", value: 48, suffix: "" },
+  { label: "Agile Profile Turnaround", value: 99, suffix: "%" },
 ];
 
 export default function About() {
@@ -192,10 +192,6 @@ export default function About() {
                   <p className="text-slate-600 text-sm leading-relaxed">
                     {item.text}
                   </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-200/60 flex items-center gap-2 text-xs font-semibold text-slate-500 group-hover:text-slate-900 transition-colors">
-                  <span>AIT3CH360 Standard</span>
-                  <span className="text-amber-500">★ ★ ★ ★ ★</span>
                 </div>
               </div>
             ))}

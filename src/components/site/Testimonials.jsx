@@ -62,7 +62,7 @@ const testimonials = [
     role: "Director of Operations",
     company: "CloudOps Infotech",
     rating: 5,
-    text: "Fast 48-hour turnarounds, transparent feedback, and a deep appreciation for modern technology architectures. They are our go-to recruitment partner in India.",
+    text: "Agile profile turnarounds, transparent feedback, and a deep appreciation for modern technology architectures. They are our go-to recruitment partner in India.",
     image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
     hireType: "DevOps & SRE Specialists",
   },
