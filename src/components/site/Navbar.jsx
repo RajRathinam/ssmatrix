@@ -75,16 +75,14 @@ export default function Navbar() {
 
             <div className="flex animate-topbar-marquee hover:pause whitespace-nowrap items-center will-change-transform">
               {[
+                "Software & Web Development",
                 "Cloud & DevOps Engineering",
-                "Payroll & Statutory Compliance",
-                "Data, AI & Automation",
+                "Data & AI Automation",
                 "IT & Non-IT Recruitment",
-                "Agile Profile Turnaround",
+                "Software & Web Development",
                 "Cloud & DevOps Engineering",
-                "Payroll & Statutory Compliance",
-                "Data, AI & Automation",
+                "Data & AI Automation",
                 "IT & Non-IT Recruitment",
-                "Agile Profile Turnaround",
               ].map((item, idx) => (
                 <div key={`set1-${idx}`} className="inline-flex items-center gap-2 mx-4 text-slate-300 hover:text-amber-300 transition-colors cursor-default">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-400/80 shrink-0" />
@@ -92,16 +90,14 @@ export default function Navbar() {
                 </div>
               ))}
               {[
+                "Software & Web Development",
                 "Cloud & DevOps Engineering",
-                "Payroll & Statutory Compliance",
-                "Data, AI & Automation",
+                "Data & AI Automation",
                 "IT & Non-IT Recruitment",
-                "Agile Profile Turnaround",
+                "Software & Web Development",
                 "Cloud & DevOps Engineering",
-                "Payroll & Statutory Compliance",
-                "Data, AI & Automation",
+                "Data & AI Automation",
                 "IT & Non-IT Recruitment",
-                "Agile Profile Turnaround",
               ].map((item, idx) => (
                 <div key={`set2-${idx}`} className="inline-flex items-center gap-2 mx-4 text-slate-300 hover:text-amber-300 transition-colors cursor-default">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-400/80 shrink-0" />

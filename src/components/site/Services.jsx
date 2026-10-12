@@ -51,10 +51,10 @@ const allServices = [
     title: "Contract Staffing",
     desc: "Skilled professionals on our payroll, deployed to your project for the exact duration you need with zero overhead.",
     icon: Briefcase,
-    badge: "Agile Scale",
+    badge: "Agility Scale",
     color: "indigo",
     features: [
-      "Agile ramp-up & profile turnaround",
+      "Agility - Profile Turnaround & fast ramp-up",
       "Flexible project tenure",
       "Convert-to-hire options",
     ],

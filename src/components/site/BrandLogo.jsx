@@ -92,7 +92,7 @@ export default function BrandLogo({ className = "h-9", isDark = false, showTagli
                 isDark ? "text-amber-400" : "text-amber-600"
               }`}
             >
-              Consultancy
+              Consultant
             </span>
           </div>
         )}

@@ -38,6 +38,12 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const subject = encodeURIComponent(`Inquiry from ${formData.name || "Client"} - ${formData.inquiryType}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nCompany: ${formData.company}\nInquiry Type: ${formData.inquiryType}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:hr@ait3ch360.com?subject=${subject}&body=${body}`;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -151,14 +157,17 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Instant WhatsApp Action */}
+              {/* Direct Email Action */}
               <div className="pt-4 border-t border-slate-200/80">
                 <a
-                  href="mailto:enquiry@ait3ch360.com"
-                  className="w-full flex items-center justify-center gap-2.5 py-3 px-5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors shadow-sm"
+                  href="mailto:enquiry@ait3ch360.com?subject=Enquiry%20to%20AIT3CH360"
+                  data-email="enquiry@ait3ch360.com"
+                  aria-label="Send Your Enquiry to enquiry@ait3ch360.com"
+                  title="Official Email: enquiry@ait3ch360.com"
+                  className="w-full flex items-center justify-center gap-2.5 py-3 px-5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors shadow-sm cursor-pointer"
                 >
                   <Mail className="w-4 h-4 text-amber-400" />
-                  <span>Send Direct Email to enquiry@ait3ch360.com</span>
+                  <span>Send Your Enquiry</span>
                 </a>
               </div>
             </div>
@@ -188,16 +197,10 @@ export default function Contact() {
           >
             {/* Form Top Header */}
             <div className="p-7 sm:p-8 bg-gradient-to-r from-slate-950 to-indigo-950 text-white border-b border-slate-800">
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <div className="mb-2">
                 <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">
                   Quick Response Mandate
                 </span>
-                <a
-                  href="mailto:hr@ait3ch360.com"
-                  className="text-slate-300 hover:text-amber-300 text-xs font-medium transition-colors"
-                >
-                  Direct Desk: hr@ait3ch360.com
-                </a>
               </div>
               <h3 className="text-2xl font-bold font-display text-white">
                 Request a Talent or Project Proposal
@@ -331,6 +334,9 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
+                data-email="hr@ait3ch360.com"
+                aria-label="Submit inquiry to hr@ait3ch360.com"
+                title="Direct Desk: hr@ait3ch360.com"
                 className="w-full py-3.5 px-6 rounded-2xl font-display font-bold text-sm text-slate-950 bg-amber-400 hover:bg-amber-300 disabled:opacity-60 transition-all shadow-md shadow-amber-500/20 flex items-center justify-center gap-2 cursor-pointer active:scale-98"
               >
                 {isSubmitting ? (

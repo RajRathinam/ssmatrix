@@ -8,13 +8,15 @@ export default function Footer() {
 
   const handleSubscribe = (e) => {
     e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setTimeout(() => {
-        setSubscribed(false);
-        setEmail("");
-      }, 4000);
-    }
+    const mailto = email
+      ? `mailto:subscribe@ait3ch360.com?subject=Newsletter%20Subscription&body=Please%20subscribe%20${encodeURIComponent(email)}`
+      : "mailto:subscribe@ait3ch360.com?subject=Newsletter%20Subscription";
+    window.location.href = mailto;
+    setSubscribed(true);
+    setTimeout(() => {
+      setSubscribed(false);
+      setEmail("");
+    }, 4000);
   };
 
   return (
@@ -40,7 +42,7 @@ export default function Footer() {
             </a>
 
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
-              Manpower & technology consultancy helping businesses grow with the right talent and the right tools.
+              Manpower & technology consultant helping businesses grow with the right talent and the right tools.
             </p>
 
             <div className="pt-2">
@@ -75,11 +77,11 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-400">
               {[
-                { label: "About", href: "#about" },
-                { label: "Contact", href: "#contact" },
-                { label: "Why AIT3CH360", href: "#why" },
+                { label: "About Us", href: "#about" },
                 { label: "How We Work", href: "#process" },
+                { label: "Why AIT3CH360", href: "#why" },
                 { label: "Key Stats", href: "#stats" },
+                { label: "Contact", href: "#contact" },
               ].map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="hover:text-amber-400 transition-colors">
@@ -97,7 +99,6 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-400">
               {[
-                "Manpower Solutions",
                 "Technology Consulting",
                 "Permanent Recruitment",
                 "Contract Staffing",
@@ -153,22 +154,22 @@ export default function Footer() {
                     placeholder="Enter work email"
                     className="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                   />
-                  <button
-                    type="submit"
-                    className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs transition-colors shrink-0 cursor-pointer"
+                  <a
+                    href="mailto:subscribe@ait3ch360.com?subject=Newsletter%20Subscription"
+                    onClick={(e) => {
+                      if (email) {
+                        e.preventDefault();
+                        handleSubscribe(e);
+                      }
+                    }}
+                    className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs transition-colors shrink-0 flex items-center justify-center cursor-pointer"
                   >
                     Join
-                  </button>
-                </div>
-                <div className="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
-                  <span>Direct desk:</span>
-                  <a href="mailto:subscribe@ait3ch360.com" className="text-amber-400 hover:underline font-medium">
-                    subscribe@ait3ch360.com
                   </a>
                 </div>
                 {subscribed && (
                   <p className="text-[11px] text-emerald-400 flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5" /> Subscribed successfully via subscribe@ait3ch360.com!
+                    <CheckCircle2 className="w-3.5 h-3.5" /> Opening mail client for subscribe@ait3ch360.com...
                   </p>
                 )}
               </form>
@@ -179,12 +180,17 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} AIT3CH360. Manpower & Technology Consultancy. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} AIT3CH360. Manpower & Technology Consultant. All Rights Reserved.</p>
           <div className="flex items-center gap-1.5 text-slate-400">
             <span>Developed by</span>
-            <span className="text-amber-400 font-semibold tracking-wide hover:text-amber-300 transition-colors">
-              Infygrid Solutions
-            </span>
+            <a
+              href="https://trueluxe.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-400 font-semibold tracking-wide hover:text-amber-300 transition-colors hover:underline"
+            >
+              Trueluxe Solutions
+            </a>
           </div>
           <div className="flex items-center gap-6">
             <a href="#home" className="hover:text-slate-400 transition-colors">Privacy Policy</a>

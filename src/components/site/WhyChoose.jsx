@@ -26,11 +26,11 @@ const reasons = [
     icon: Layers,
     title: "Flexible Engagement",
     description: "Choose permanent, contract, dedicated team or project-based models as your needs change.",
-    badge: "Agile Delivery",
+    badge: "Agility Delivery",
   },
   {
     icon: Clock,
-    title: "Agile Profile Turnaround",
+    title: "Agility Profile Turnaround",
     description: "Rapid first-profile delivery for fast-track scaling with zero compromise on vetted quality.",
     badge: "Speed to Hire",
   },

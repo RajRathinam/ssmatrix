@@ -18,7 +18,7 @@ const capabilities = [
   { name: "Payroll & Statutory Compliance", icon: ShieldCheck, color: "text-emerald-500 bg-emerald-50" },
   { name: "Data, AI & Automation", icon: Zap, color: "text-rose-500 bg-rose-50" },
   { name: "IT & Non-IT Recruitment", icon: Briefcase, color: "text-cyan-500 bg-cyan-50" },
-  { name: "Agile Profile Turnaround", icon: Zap, color: "text-amber-600 bg-amber-100/60" },
+  { name: "Agility - Profile Turnaround", icon: Zap, color: "text-amber-600 bg-amber-100/60" },
 ];
 
 export function MarketingMarquee() {

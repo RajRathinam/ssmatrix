@@ -29,8 +29,8 @@ const stats = [
   {
     value: 98,
     suffix: "%",
-    label: "Agile Profile Turnaround",
-    description: "Speed without compromise: vetted, interview-ready profiles delivered with agile velocity.",
+    label: "Agility Profile Turnaround",
+    description: "Speed without compromise: vetted, interview-ready profiles delivered with agility and velocity.",
     icon: Clock,
     highlight: false,
   },

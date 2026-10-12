@@ -55,17 +55,16 @@ const industries = [
 ];
 
 const glanceItems = [
-  { title: "Consultancy Model", text: "Manpower & technology consultancy" },
+  { title: "Consultant Model", text: "Manpower & technology consultant" },
   { title: "Client Footprint", text: "Serving startups, SMEs and enterprises" },
   { title: "Workforce Flexibility", text: "Onsite, hybrid and remote delivery" },
-  { title: "Headquarters & Reach", text: "Based in Tamil Nadu, India, serving clients globally" },
 ];
 
 const achievements = [
   { label: "Professionals Placed", value: 500, suffix: "+" },
   { label: "Client Engagements", value: 50, suffix: "+" },
   { label: "Industries Served", value: 15, suffix: "+" },
-  { label: "Agile Profile Turnaround", value: 99, suffix: "%" },
+  { label: "Agility Profile Turnaround", value: 99, suffix: "%" },
 ];
 
 export default function About() {
@@ -124,7 +123,7 @@ export default function About() {
             </div>
 
             {/* At a Glance Badges */}
-            <div className="relative z-10 mt-8 pt-6 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="relative z-10 mt-8 pt-6 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-3">
               {glanceItems.map((item, idx) => (
                 <div key={idx} className="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700/80">
                   <div className="text-amber-400 font-semibold text-xs">{item.title}</div>

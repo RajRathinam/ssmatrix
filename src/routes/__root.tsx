@@ -77,10 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AIT3CH360 — Manpower & Technology Consultancy" },
+      { title: "AIT3CH360 — Manpower & Technology Consultant" },
       { name: "description", content: "AIT3CH360: The right people. The right technology. One trusted partner. We help businesses build high-performing teams and modern technology platforms." },
       { name: "author", content: "AIT3CH360" },
-      { property: "og:title", content: "AIT3CH360 — Manpower & Technology Consultancy" },
+      { property: "og:title", content: "AIT3CH360 — Manpower & Technology Consultant" },
       { property: "og:description", content: "Connecting organisations with the right talent and the right technology. Serving startups, SMEs, and enterprises globally from Tamil Nadu, India." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

@@ -22,9 +22,9 @@ import { ScrollProgress, BackToTop } from "@/components/site/Utilities";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AIT3CH360 — Manpower & Technology Consultancy" },
+      { title: "AIT3CH360 — Manpower & Technology Consultant" },
       { name: "description", content: "AIT3CH360: The right people. The right technology. One trusted partner. End-to-end workforce solutions and practical technology consulting based in Tamil Nadu, India." },
-      { property: "og:title", content: "AIT3CH360 — Manpower & Technology Consultancy" },
+      { property: "og:title", content: "AIT3CH360 — Manpower & Technology Consultant" },
       { property: "og:description", content: "Connecting organisations with the right talent and the right technology. Permanent & contract staffing, software development, cloud, data & AI." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
