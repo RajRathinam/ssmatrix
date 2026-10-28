@@ -371,31 +371,18 @@ export default function Services() {
           {/* Filter Pills */}
           <div className="inline-flex p-1.5 rounded-full bg-slate-200/80 border border-slate-300/80 gap-1 flex-wrap justify-center">
             {categories.map((cat) => {
-              const count =
-                cat === "All Services"
-                  ? allServices.length
-                  : allServices.filter((s) => s.category === cat).length;
               const isActive = selectedCategory === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
+                  className={`px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                     isActive
                       ? "bg-slate-900 text-white shadow-md"
                       : "text-slate-700 hover:text-slate-900 hover:bg-white/60"
                   }`}
                 >
-                  <span>{cat}</span>
-                  <span
-                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold ${
-                      isActive
-                        ? "bg-white/20 text-white"
-                        : "bg-slate-300/80 text-slate-700"
-                    }`}
-                  >
-                    {count}
-                  </span>
+                  {cat}
                 </button>
               );
             })}
