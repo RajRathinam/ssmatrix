@@ -147,10 +147,10 @@ export default function Contact() {
                     Direct Line
                   </h4>
                   <a
-                    href="tel:+910000000000"
+                    href="tel:+918939320891"
                     className="text-sm font-bold text-slate-900 hover:text-amber-600 transition-colors block"
                   >
-                    +91 00000 00000
+                    +91-893-932-0891
                   </a>
                   <span className="text-[11px] text-slate-500">
                     Mon – Sat: 9:00 AM – 6:30 PM IST

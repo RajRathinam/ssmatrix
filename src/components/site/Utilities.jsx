@@ -42,7 +42,7 @@ export function BackToTop() {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
       {/* Quick WhatsApp Action Beacon */}
       <a
-        href="https://wa.me/919865348416"
+        href="https://wa.me/918939320891"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
