@@ -184,12 +184,12 @@ export default function Footer() {
           <div className="flex items-center gap-1.5 text-slate-400">
             <span>Developed by</span>
             <a
-              href="https://trueluxe.in"
+              href="https://infygrid.in"
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-400 font-semibold tracking-wide hover:text-amber-300 transition-colors hover:underline"
             >
-              Trueluxe Solutions
+              InfyGrid Solutions
             </a>
           </div>
           <div className="flex items-center gap-6">
